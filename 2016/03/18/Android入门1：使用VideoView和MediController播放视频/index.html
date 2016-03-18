@@ -1,0 +1,680 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="最近在搞Android，入门曲线还是挺陡峭的，主要还是自己对Java的理解不够深入。前后学习了几天，把最近学习到的一些知识点总结归纳一下，正所谓温故而知新。
+目前想搞一个禁播视频站，主要内容都是一些大陆被墙的动漫啊，美剧啥的，比如我最爱的死亡笔记。内容不包含18禁的~感觉有些小伙伴要失望咯。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android入门1：使用VideoView和MediController播放视频">
+<meta property="og:url" content="http://onlytjt.github.io/2016/03/18/Android入门1：使用VideoView和MediController播放视频/index.html">
+<meta property="og:site_name" content="Jiatian Tian">
+<meta property="og:description" content="最近在搞Android，入门曲线还是挺陡峭的，主要还是自己对Java的理解不够深入。前后学习了几天，把最近学习到的一些知识点总结归纳一下，正所谓温故而知新。
+目前想搞一个禁播视频站，主要内容都是一些大陆被墙的动漫啊，美剧啥的，比如我最爱的死亡笔记。内容不包含18禁的~感觉有些小伙伴要失望咯。">
+<meta property="og:updated_time" content="2016-03-18T05:48:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android入门1：使用VideoView和MediController播放视频">
+<meta name="twitter:description" content="最近在搞Android，入门曲线还是挺陡峭的，主要还是自己对Java的理解不够深入。前后学习了几天，把最近学习到的一些知识点总结归纳一下，正所谓温故而知新。
+目前想搞一个禁播视频站，主要内容都是一些大陆被墙的动漫啊，美剧啥的，比如我最爱的死亡笔记。内容不包含18禁的~感觉有些小伙伴要失望咯。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> Android入门1：使用VideoView和MediController播放视频 | Jiatian Tian </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jiatian Tian</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Work hard! Play hard!</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android入门1：使用VideoView和MediController播放视频
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-03-18T13:43:41+08:00" content="2016-03-18">
+              2016-03-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近在搞Android，入门曲线还是挺陡峭的，主要还是自己对Java的理解不够深入。前后学习了几天，把最近学习到的一些知识点总结归纳一下，正所谓温故而知新。</p>
+<p>目前想搞一个禁播视频站，主要内容都是一些大陆被墙的动漫啊，美剧啥的，比如我最爱的死亡笔记。内容不包含18禁的~感觉有些小伙伴要失望咯。</p>
+<a id="more"></a>
+<h4 id="1-Android入门素材"><a href="#1-Android入门素材" class="headerlink" title="1. Android入门素材"></a>1. Android入门素材</h4><p>以下罗列在我学习过程中使用的感觉还算不错的素材  </p>
+<p>a. Official Android Training：developer.android.com/training/index.html  </p>
+<p>b. 上述Android官方教程中文翻译版本：<a href="http://hukai.me/android-training-course-in-chinese/index.html" target="_blank" rel="external">http://hukai.me/android-training-course-in-chinese/index.html</a>  </p>
+<p>c. imooc网站[Android攻城狮入门系列]：<a href="http://www.imooc.com/index/search?words=android" target="_blank" rel="external">http://www.imooc.com/index/search?words=android</a>  </p>
+<p>d.《第一行代码-Android》pdf我放到自己的百度网盘里面，希望大家不要去告诉作者(笑)</p>
+<p>链接: <a href="http://pan.baidu.com/s/1sjy3rw5" target="_blank" rel="external">http://pan.baidu.com/s/1sjy3rw5</a>  密码: 7gy6</p>
+<h4 id="2-VideoView和MediaController介绍"><a href="#2-VideoView和MediaController介绍" class="headerlink" title="2. VideoView和MediaController介绍"></a>2. VideoView和MediaController介绍</h4><p>Android VideoView类为我们提供了十分方便的视频播放API，其主要方法有。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">start</span><span class="params">()</span>：开始播放</span><br><span class="line"><span class="keyword">void</span> <span class="title">stopPlayback</span><span class="params">()</span>：停止播放</span><br><span class="line"><span class="keyword">void</span> <span class="title">pause</span><span class="params">()</span>：暂停</span><br><span class="line"><span class="keyword">void</span> <span class="title">resume</span><span class="params">()</span>：重新播放</span><br><span class="line"><span class="keyword">void</span> <span class="title">seekTo</span><span class="params">(<span class="keyword">int</span> msec)</span>：从第几毫秒开始播放</span><br><span class="line"><span class="keyword">int</span> <span class="title">getCurrentPosition</span><span class="params">()</span>：获取当前播放的位置</span><br><span class="line"><span class="keyword">int</span> <span class="title">getDuration</span><span class="params">()</span>：获取当前播放视频的总长度</span><br><span class="line"><span class="keyword">boolean</span> <span class="title">isPlaying</span><span class="params">()</span>：当前VideoView是否在播放视频</span><br><span class="line"><span class="keyword">void</span> <span class="title">setVideoPath</span><span class="params">(String path)</span>：以文件路径的方式设置VideoView播放的视频源。</span><br><span class="line"><span class="keyword">void</span> <span class="title">setVideoURI</span><span class="params">(Uri uri)</span>：以Uri的方式设置视频源，可以是网络Uri或本地Uri。</span><br><span class="line"><span class="title">setMediaController</span><span class="params">(MediaController controller)</span>：设置MediaController控制器。</span><br><span class="line"><span class="title">setOnCompletionListener</span><span class="params">(MediaPlayer.onCompletionListener l)</span>：监听播放完成的事件。</span><br><span class="line"><span class="title">setOnErrorListener</span><span class="params">(MediaPlayer.OnErrorListener l)</span>：监听播放发生错误时候的事件。</span><br><span class="line"><span class="title">setOnPreparedListener</span><span class="params">(MediaPlayer.OnPreparedListener l)</span>：：监听视频装载完成的事件。</span></span><br></pre></td></tr></table></figure>
+<p>除了简单的操作和丰富的API以外，我们在装载视频时，无需进行编码，播放完成后也无需手动回收资源。</p>
+<p>除了播放视频，Media Controller类则为我们提供了一个悬浮的操作栏，包含了播放，暂停，快进，快退，上一个，下一个等功能键。甚至连拖动进度条至某处播放都已经实现，简直是业界良心。在使用前VideoView和MediController需要相互指定控件。其内置方法有。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isShowing</span><span class="params">()</span>：当前悬浮控制栏是否显示。</span><br><span class="line"><span class="keyword">void</span> <span class="title">setMediaPlayer</span><span class="params">(MediaController.MediaPlayerControl player)</span>：设置控制的组件。</span><br><span class="line"><span class="keyword">void</span> <span class="title">setPrevNextListeners</span><span class="params">(View.OnClickListener next,View.OnClickListener prev)</span>：设置上一个视频、下一个视频的切换事件。</span></span><br></pre></td></tr></table></figure>
+<p>默认情况下，Media Controller悬浮显示3s后隐藏，触摸响应的VideoView呼出。默认上一个，下一个按钮隐藏。</p>
+<h4 id="3-播放视频Demo程序"><a href="#3-播放视频Demo程序" class="headerlink" title="3. 播放视频Demo程序"></a>3. 播放视频Demo程序</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.edu.sjtu.videoplayer.bannedvideoplayer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.ProgressDialog;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.media.MediaPlayer;</span><br><span class="line"><span class="keyword">import</span> android.net.Uri;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.view.Menu;</span><br><span class="line"><span class="keyword">import</span> android.view.MenuItem;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.*;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> VideoView vv_videoview;</span><br><span class="line">    <span class="keyword">private</span> MediaController mController;</span><br><span class="line">    <span class="keyword">private</span> Button btn_play;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        btn_play = (Button) findViewById(R.id.btn_play);</span><br><span class="line">        vv_videoview = (VideoView) findViewById(R.id.vv_videoview);</span><br><span class="line">        mController = <span class="keyword">new</span> MediaController(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Button响应事件，播放本地视频</span></span><br><span class="line">        btn_play.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">			<span class="comment">// Uri videoUri = Uri.parse("http://www.androidbegin.com/tutorial/AndroidCommercial.3gp");</span></span><br><span class="line">			<span class="comment">// vv_videoview.setVideoURI(videoUri);</span></span><br><span class="line">                File videoFile = <span class="keyword">new</span> File(<span class="string">"/sdcard/DCIM/Camera/test.mp4"</span>);</span><br><span class="line">                <span class="keyword">if</span> (videoFile.exists()) &#123;</span><br><span class="line">                    vv_videoview.setVideoPath(videoFile.getAbsolutePath());</span><br><span class="line">                    vv_videoview.setMediaController(mController);</span><br><span class="line">                    vv_videoview.start();</span><br><span class="line">                    vv_videoview.requestFocus();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Inflate the menu; this adds items to the action bar if it is present.</span></span><br><span class="line">        getMenuInflater().inflate(R.menu.menu_main, menu);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Handle action bar item clicks here. The action bar will</span></span><br><span class="line">        <span class="comment">// automatically handle clicks on the Home/Up button, so long</span></span><br><span class="line">        <span class="comment">// as you specify a parent activity in AndroidManifest.xml.</span></span><br><span class="line">        <span class="keyword">int</span> id = item.getItemId();</span><br><span class="line">        <span class="comment">//noinspection SimplifiableIfStatement</span></span><br><span class="line">        <span class="keyword">if</span> (id == R.id.action_settings) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onOptionsItemSelected(item);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Xml文件只有简单地一个Button和VideoView控件，节约篇幅就不上了，由于博主一直使用真机Debug，这里就不截图了。如果需要播放网络视频，只需要看我注释的两行，将<code>setVideoPath()</code>更改为相应的<code>setVideoURI()</code>就可以了。这里需要在AndroidManifest.xml添加两条权限。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_EXTERNAL_STORAGE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里需要多啰嗦的，也是经常会困惑刚入门同志的几个点。  </p>
+<p>a. 增加的权限开头android.permission是小写的，Android Studio可能会默认补全为大写，导致没有相应权限。  </p>
+<p>b. VideoView虽然可以播放网络视频，但是网络视频流实际是分为Http协议和RTSP(Real Time Streaming Protocal)两种。RTSP协议支持实时播放，而Http协议则需要缓冲一定时间才能够播放。  </p>
+<p>c. 国内传统的视频站给出的URL并不是真实视频地址，因此像优酷，爱奇艺等网站的视频并不能直接使用VideoView播放。  </p>
+<h4 id="4-Reference："><a href="#4-Reference：" class="headerlink" title="4. Reference："></a>4. Reference：</h4><p>a) <a href="http://www.androidbegin.com/tutorial/android-video-streaming-videoview-tutorial/" target="_blank" rel="external">http://www.androidbegin.com/tutorial/android-video-streaming-videoview-tutorial/</a>  </p>
+<p>b) <a href="http://www.cnblogs.com/plokmju/p/android_videoview.html" target="_blank" rel="external">http://www.cnblogs.com/plokmju/p/android_videoview.html</a>  </p>
+<hr>
+<p><strong>By tjt</strong>  </p>
+<p><strong>2015.12.02</strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/18/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="Jiatian Tian" />
+          <p class="site-author-name" itemprop="name">Jiatian Tian</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Android入门素材"><span class="nav-number">1.</span> <span class="nav-text">1. Android入门素材</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-VideoView和MediaController介绍"><span class="nav-number">2.</span> <span class="nav-text">2. VideoView和MediaController介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-播放视频Demo程序"><span class="nav-number">3.</span> <span class="nav-text">3. 播放视频Demo程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Reference："><span class="nav-number">4.</span> <span class="nav-text">4. Reference：</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiatian Tian</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>

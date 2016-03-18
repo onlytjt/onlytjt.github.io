@@ -1,0 +1,693 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Android入门2：从GridView控件使用到自定义Adapter在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。
+1. 小白">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jiatian Tian">
+<meta property="og:url" content="http://onlytjt.github.io/2015/12/08/Android2_Adapter/index.html">
+<meta property="og:site_name" content="Jiatian Tian">
+<meta property="og:description" content="Android入门2：从GridView控件使用到自定义Adapter在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。
+1. 小白">
+<meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_3.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_4.png">
+<meta property="og:updated_time" content="2015-12-09T04:56:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jiatian Tian">
+<meta name="twitter:description" content="Android入门2：从GridView控件使用到自定义Adapter在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。
+1. 小白">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title>  | Jiatian Tian </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jiatian Tian</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Work hard! Play hard!</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-12-08T21:40:23+08:00" content="2015-12-08">
+              2015-12-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Android入门2：从GridView控件使用到自定义Adapter"><a href="#Android入门2：从GridView控件使用到自定义Adapter" class="headerlink" title="Android入门2：从GridView控件使用到自定义Adapter"></a>Android入门2：从GridView控件使用到自定义Adapter</h3><p>在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。</p>
+<h4 id="1-小白初探–使用SimpleAdapter加载本地资源"><a href="#1-小白初探–使用SimpleAdapter加载本地资源" class="headerlink" title="1. 小白初探–使用SimpleAdapter加载本地资源"></a>1. 小白初探–使用SimpleAdapter加载本地资源</h4><p>单纯学习使用GridView还是很简单的，只需要使用一个数据适配器将所需要显示的数据资源(包括图像和文本)，与布局文件中的控件连接起来即可。</p>
+<p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_1.png" alt="Android2_1" title="数据适配器"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// activity_gridview.xml</span><br><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">                <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span><br><span class="line">                <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">                <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">                <span class="attr">android:paddingLeft</span>=<span class="string">"@dimen/activity_horizontal_margin"</span></span><br><span class="line">                <span class="attr">android:paddingRight</span>=<span class="string">"@dimen/activity_horizontal_margin"</span></span><br><span class="line">                <span class="attr">android:paddingTop</span>=<span class="string">"@dimen/activity_vertical_margin"</span></span><br><span class="line">                <span class="attr">android:paddingBottom</span>=<span class="string">"@dimen/activity_vertical_margin"</span></span><br><span class="line">                <span class="attr">tools:context</span>=<span class="string">"edu.sjtu.helloworld.app.GridviewActivity"</span></span><br><span class="line">                <span class="attr">android:id</span>=<span class="string">"@+id/grid"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">GridView</span></span><br><span class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/grid_test"</span></span><br><span class="line">            <span class="attr">android:numColumns</span>=<span class="string">"auto_fit"</span></span><br><span class="line">            <span class="attr">android:horizontalSpacing</span>=<span class="string">"10dp"</span></span><br><span class="line">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">GridView</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// grid_item.xml</span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">              <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span><br><span class="line">              <span class="attr">android:gravity</span>=<span class="string">"center"</span></span><br><span class="line">              <span class="attr">android:background</span>=<span class="string">"#ffffff"</span></span><br><span class="line">              <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">              <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ImageView</span></span><br><span class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/img_item"</span></span><br><span class="line">            <span class="attr">android:src</span>=<span class="string">"@mipmap/ic_launcher"</span></span><br><span class="line">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/txt_item"</span></span><br><span class="line">            <span class="attr">android:textColor</span>=<span class="string">"#000000"</span></span><br><span class="line">            <span class="attr">android:text</span>=<span class="string">"文字区域"</span></span><br><span class="line">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GridViewActivity.java</span></span><br><span class="line"><span class="keyword">package</span> edu.sjtu.helloworld.app;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.net.Uri;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.view.Menu;</span><br><span class="line"><span class="keyword">import</span> android.view.MenuItem;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.*;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GridviewActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> GridView grid_test;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Map&lt;String, Object&gt;&gt; dataList;</span><br><span class="line">    <span class="keyword">private</span> SimpleAdapter simpAdapter;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] img = &#123;R.mipmap.conan, R.mipmap.death_note,</span><br><span class="line">        R.mipmap.naruto, R.mipmap.one_piece&#125;;</span><br><span class="line">    <span class="keyword">private</span> String[] imgName = &#123;<span class="string">"conan"</span>, <span class="string">"death_note"</span>, <span class="string">"naruto"</span>, <span class="string">"one_piece"</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_gridview);</span><br><span class="line"></span><br><span class="line">        grid_test = (GridView) findViewById(R.id.grid_test); <span class="comment">// step1</span></span><br><span class="line">        dataList = <span class="keyword">new</span> ArrayList&lt;Map&lt;String, Object&gt;&gt;(); <span class="comment">// step2</span></span><br><span class="line">        simpAdapter = <span class="keyword">new</span> SimpleAdapter(<span class="keyword">this</span>, getData(), R.layout.grid_item, </span><br><span class="line">            <span class="keyword">new</span> String[]&#123;<span class="string">"img"</span>, <span class="string">"txt"</span>&#125;, <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;R.id.img_item, R.id.txt_item&#125;);</span><br><span class="line">        grid_test.setAdapter(simpAdapter); <span class="comment">// step3</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;Map&lt;String, Object&gt;&gt; getData() &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;img.length; i++) &#123;</span><br><span class="line">            Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">            map.put(<span class="string">"img"</span>, img[i]);</span><br><span class="line">            map.put(<span class="string">"txt"</span>, imgName[i]);</span><br><span class="line">            dataList.add(map);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dataList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上代码实现GridView主要分为3步。  </p>
+<p>step1：将GridView控件与xml连接。  </p>
+<p>step2：根据xml中想要显示的数据格式，初始化数据源，并使用<code>getData()</code>函数把本地数据添加到数据源中。这里的数据是一个List，List中每一条对应GridView的一块区域(也就是ListView中的一行)。List中存放的是一个Map泛型，其中的数据与想要显示的内容一一对应。  </p>
+<p>step3：给GirdView设置相应的数据适配器。  </p>
+<p>经过以上3步，可以很简单地把自己想要显示的本地资源，静态加载出来。效果如下图。</p>
+<p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_2.png" alt="Android2_2" title="GridView静态加载本地资源效果"></p>
+<h4 id="2-招式进阶–定制自己的数据适配器Adapter"><a href="#2-招式进阶–定制自己的数据适配器Adapter" class="headerlink" title="2. 招式进阶–定制自己的数据适配器Adapter"></a>2. 招式进阶–定制自己的数据适配器Adapter</h4><p>当我们需要处理较为复杂的界面，加载接收多种信息时，Android提供给我们的数据适配器往往会显得苍白无力。因此我们会根据自己的需要定义数据适配器。xml文件布局同上。  </p>
+<p>首先看一下Android中所有有关Adapter的接口和类的继承关系。我们选择继承ArrayAdapter来写我们自己的适配器。</p>
+<p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_3.jpg" alt="Android2_3" title="Adapter适配器继承关系"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span>&lt;<span class="title">GridItem</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Context mContext;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyAdapter</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">this</span>.context = context;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 返回Adapter中数据集的条目数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>; <span class="comment">// 获取数据集中与指定索引对应的数据项</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getItemId</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 取在列表中与指定索引对应的行id</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GridItem.java</span></span><br><span class="line"><span class="keyword">package</span> cn.edu.sjtu.videoplayer.bannedplayer02;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GridItem</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String image;</span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GridItem</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getImage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> image;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setImage</span><span class="params">(String image)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.image = image;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> title;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTitle</span><span class="params">(String title)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.title = title;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GridViewAdapter.java</span></span><br><span class="line"><span class="keyword">package</span> cn.edu.sjtu.videoplayer.bannedplayer02;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.view.LayoutInflater;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.widget.ArrayAdapter;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"><span class="keyword">import</span> com.squareup.picasso.Picasso;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by tian on 12/7/15.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GridViewAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span>&lt;<span class="title">GridItem</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Context mContext;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> layoutResourceId;</span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;GridItem&gt; mGridData = <span class="keyword">new</span> ArrayList&lt;GridItem&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GridViewAdapter</span><span class="params">(Context context, <span class="keyword">int</span> resource, ArrayList&lt;GridItem&gt; objects)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, resource, objects);</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">        <span class="keyword">this</span>.layoutResourceId = resource;</span><br><span class="line">        <span class="keyword">this</span>.mGridData = objects;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setGridData</span><span class="params">(ArrayList&lt;GridItem&gt; mGridData)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mGridData = mGridData;</span><br><span class="line">        notifyDataSetChanged();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line">        ViewHolder holder;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) &#123;</span><br><span class="line">            LayoutInflater inflater = ((Activity)mContext).getLayoutInflater();</span><br><span class="line">            convertView = inflater.inflate(layoutResourceId, parent, <span class="keyword">false</span>);</span><br><span class="line">            holder = <span class="keyword">new</span> ViewHolder();</span><br><span class="line">            holder.textView = (TextView) convertView.findViewById(R.id.textview_item);</span><br><span class="line">            holder.imageView = (ImageView) convertView.findViewById(R.id.imgview_item);</span><br><span class="line">            convertView.setTag(holder);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            holder = (ViewHolder) convertView.getTag();</span><br><span class="line">        &#125;</span><br><span class="line">        GridItem item = mGridData.get(position);</span><br><span class="line">        holder.textView.setText(item.getTitle());</span><br><span class="line">        Picasso.with(mContext).load(item.getImage()).into(holder.imageView);</span><br><span class="line">        <span class="keyword">return</span> convertView;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        TextView textView;</span><br><span class="line">        ImageView imageView;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里需要重点讲也是必须重写的是<code>getView()</code>方法。首先我们重复使用缓存convertView，如果缓存区已经存在View对象，我们则不再重新创建。同时，我们也使用ViewHolder对实例化后的控件进行暂存，因为<code>findViewById</code>方法的查找是很费内存的。如果一个Item中有许多内容，每次的查找过程将耗费我们众多的时间。虽然我还是小白一个，但是一定要有一颗大神的心，代码要写效率高的(笑)。  </p>
+<p>在这里我其实是有一些疑问的，在这个类的代码中，我们看到了控件和Adapter的绑定过程，也看到了Adapter向控件(TextView, ImageView)写入我们的资源，但是并没有看到将数据源设置到Adapter的具体代码。关于这个问题，大家可以在文章最后附上的一些链接中找寻答案，也可以打开源码自己分析。鉴于篇幅问题，本篇文章暂不对此问题进行深入探讨，后面我应该会写一遍关于Adapter实现机理和源码分析的blog，嘛，都是后话了。在对ImageView的设置中，为了简化代码，这里我使用了一个第三方库–Picasso，用于下载并缓存网络图片。这也不是本文重点，这几天我同时也在针对网络的异步请求准备材料，相关的文章很快就能写出来。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.edu.sjtu.videoplayer.bannedplayer02;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.graphics.Bitmap;</span><br><span class="line"><span class="keyword">import</span> android.graphics.BitmapFactory;</span><br><span class="line"><span class="keyword">import</span> android.media.Image;</span><br><span class="line"><span class="keyword">import</span> android.os.AsyncTask;</span><br><span class="line"><span class="keyword">import</span> android.os.Handler;</span><br><span class="line"><span class="keyword">import</span> android.os.Message;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.view.Menu;</span><br><span class="line"><span class="keyword">import</span> android.view.MenuItem;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.AdapterView;</span><br><span class="line"><span class="keyword">import</span> android.widget.GridView;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"><span class="keyword">import</span> android.widget.SimpleAdapter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.lang.ref.WeakReference;</span><br><span class="line"><span class="keyword">import</span> java.net.HttpURLConnection;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String[] localCartoonText = &#123;<span class="string">"名侦探柯南"</span>, <span class="string">"死亡笔记"</span>, <span class="string">"火影忍者"</span>, <span class="string">"海贼王"</span>&#125;;</span><br><span class="line">    <span class="keyword">private</span> String[] imgURL =&#123;<span class="string">"http://img1.imgtn.bdimg.com/it/u=3350993068,3652800343&amp;fm=21&amp;gp=0.jpg"</span>, <span class="string">"http://img0.imgtn.bdimg.com/it/u=2545030489,2226096219&amp;fm=21&amp;gp=0.jpg"</span>, <span class="string">"http://img3.imgtn.bdimg.com/it/u=3171772449,1023293196&amp;fm=21&amp;gp=0.jpg"</span>, <span class="string">"http://img0.imgtn.bdimg.com/it/u=820734872,552500686&amp;fm=21&amp;gp=0.jpg"</span>&#125;;</span><br><span class="line">    <span class="keyword">private</span> GridView mGridView = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> GridViewAdapter mGridViewAdapter = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;GridItem&gt; mGridData = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        mGridView = (GridView) findViewById(R.id.gridview_cartoon);</span><br><span class="line">        mGridData = <span class="keyword">new</span> ArrayList&lt;GridItem&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;imgURL.length; i++) &#123;</span><br><span class="line">            GridItem item = <span class="keyword">new</span> GridItem();</span><br><span class="line">            item.setTitle(localCartoonText[i]);</span><br><span class="line">            item.setImage(imgURL[i]);</span><br><span class="line">            mGridData.add(item);</span><br><span class="line">        &#125;</span><br><span class="line">        mGridViewAdapter = <span class="keyword">new</span> GridViewAdapter(<span class="keyword">this</span>, R.layout.grid_item, mGridData);</span><br><span class="line">        mGridView.setAdapter(mGridViewAdapter);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们在MainActivity中给数据适配器添加数据源，并绑定GridView，就像我们在第一小节所讲的步骤一样。另，如果想使用Picasso，在使用gradle管理的项目中，只需要在<code>build.gradle</code>文件中添加相关依赖就可以了。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile fileTree(<span class="string">dir:</span> <span class="string">'libs'</span>, <span class="string">include:</span> [<span class="string">'*.jar'</span>])</span><br><span class="line">    compile <span class="string">'com.android.support:appcompat-v7:23.1.1'</span></span><br><span class="line">    compile <span class="string">'com.squareup.picasso:picasso:2.5.2'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后附上效果，经过短暂的下载，GridView可以成功使用相关图片的uri进行下载并显示。博主都是使用真机调试，所以这个屏幕截图可能看起来比较大，有点影响博客效果，也希望同志们见谅~下次再写blog时，我使用Genymotion给大家截图:)</p>
+<p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_4.png" alt="Android2_4" title="效果显示"></p>
+<h5 id="3-Reference"><a href="#3-Reference" class="headerlink" title="3. Reference"></a>3. Reference</h5><p>(1) ViewHolder详解：<a href="http://jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/1021/1815.html" target="_blank" rel="external">http://jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/1021/1815.html</a>  </p>
+<p>(2) inflate方法与findViewById：<a href="http://www.cnblogs.com/loyea/archive/2013/04/27/3047248.html" target="_blank" rel="external">http://www.cnblogs.com/loyea/archive/2013/04/27/3047248.html</a>  </p>
+<p>(3) <a href="http://javatechig.com/android/download-and-display-image-in-android-gridview" target="_blank" rel="external">http://javatechig.com/android/download-and-display-image-in-android-gridview</a>  </p>
+<hr>
+<p><strong>By tjt</strong></p>
+<p><strong>2015.12.09</strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/02/Android1_VideoView/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/14/Android3_Toolbar/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="Jiatian Tian" />
+          <p class="site-author-name" itemprop="name">Jiatian Tian</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android入门2：从GridView控件使用到自定义Adapter"><span class="nav-number">1.</span> <span class="nav-text">Android入门2：从GridView控件使用到自定义Adapter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-小白初探–使用SimpleAdapter加载本地资源"><span class="nav-number">1.1.</span> <span class="nav-text">1. 小白初探–使用SimpleAdapter加载本地资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-招式进阶–定制自己的数据适配器Adapter"><span class="nav-number">1.2.</span> <span class="nav-text">2. 招式进阶–定制自己的数据适配器Adapter</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Reference"><span class="nav-number">1.2.1.</span> <span class="nav-text">3. Reference</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiatian Tian</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>
