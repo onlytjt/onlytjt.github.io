@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="杂七杂八," />
 
 
 
@@ -57,19 +57,16 @@
 
 
 
-<meta name="description" content="Git远程使用技巧git作为强大的版本管理软件，已经得到了广泛的应用，很多人对于本地的git操作已经非常熟悉了。然而有的时候，我们也需要一个远程的，类似云的仓库来存储我们的一些代码。github给予了我们不限量的空间来使用，今天我也来简单地总结一下在git远程使用时经常会用到的一些命令与技巧。  
-1. 初次连接本地与远程主机12345git initgit add .git commit -m">
+<meta name="description" content="git作为强大的版本管理软件，已经得到了广泛的应用，很多人对于本地的git操作已经非常熟悉了。然而有的时候，我们也需要一个远程的，类似云的仓库来存储我们的一些代码。github给予了我们不限量的空间来使用，今天我也来简单地总结一下在git远程使用时经常会用到的一些命令与技巧。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="懒角落">
+<meta property="og:title" content="Git远程使用技巧">
 <meta property="og:url" content="http://onlytjt.github.io/2015/09/02/Git_Remote/index.html">
 <meta property="og:site_name" content="懒角落">
-<meta property="og:description" content="Git远程使用技巧git作为强大的版本管理软件，已经得到了广泛的应用，很多人对于本地的git操作已经非常熟悉了。然而有的时候，我们也需要一个远程的，类似云的仓库来存储我们的一些代码。github给予了我们不限量的空间来使用，今天我也来简单地总结一下在git远程使用时经常会用到的一些命令与技巧。  
-1. 初次连接本地与远程主机12345git initgit add .git commit -m">
-<meta property="og:updated_time" content="2015-09-06T13:11:09.000Z">
+<meta property="og:description" content="git作为强大的版本管理软件，已经得到了广泛的应用，很多人对于本地的git操作已经非常熟悉了。然而有的时候，我们也需要一个远程的，类似云的仓库来存储我们的一些代码。github给予了我们不限量的空间来使用，今天我也来简单地总结一下在git远程使用时经常会用到的一些命令与技巧。">
+<meta property="og:updated_time" content="2016-03-18T06:25:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="懒角落">
-<meta name="twitter:description" content="Git远程使用技巧git作为强大的版本管理软件，已经得到了广泛的应用，很多人对于本地的git操作已经非常熟悉了。然而有的时候，我们也需要一个远程的，类似云的仓库来存储我们的一些代码。github给予了我们不限量的空间来使用，今天我也来简单地总结一下在git远程使用时经常会用到的一些命令与技巧。  
-1. 初次连接本地与远程主机12345git initgit add .git commit -m">
+<meta name="twitter:title" content="Git远程使用技巧">
+<meta name="twitter:description" content="git作为强大的版本管理软件，已经得到了广泛的应用，很多人对于本地的git操作已经非常熟悉了。然而有的时候，我们也需要一个远程的，类似云的仓库来存储我们的一些代码。github给予了我们不限量的空间来使用，今天我也来简单地总结一下在git远程使用时经常会用到的一些命令与技巧。">
 
 
 
@@ -87,7 +84,7 @@
   };
 </script>
 
-  <title>  | 懒角落 </title>
+  <title> Git远程使用技巧 | 懒角落 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -207,7 +204,7 @@
             
             
               
-                
+                Git远程使用技巧
               
             
           </h1>
@@ -246,7 +243,7 @@
       
 
       
-        <h3 id="Git远程使用技巧"><a href="#Git远程使用技巧" class="headerlink" title="Git远程使用技巧"></a>Git远程使用技巧</h3><p>git作为强大的版本管理软件，已经得到了广泛的应用，很多人对于本地的git操作已经非常熟悉了。然而有的时候，我们也需要一个远程的，类似云的仓库来存储我们的一些代码。github给予了我们不限量的空间来使用，今天我也来简单地总结一下在git远程使用时经常会用到的一些命令与技巧。  </p>
+        <p>git作为强大的版本管理软件，已经得到了广泛的应用，很多人对于本地的git操作已经非常熟悉了。然而有的时候，我们也需要一个远程的，类似云的仓库来存储我们的一些代码。github给予了我们不限量的空间来使用，今天我也来简单地总结一下在git远程使用时经常会用到的一些命令与技巧。<br><a id="more"></a></p>
 <h5 id="1-初次连接本地与远程主机"><a href="#1-初次连接本地与远程主机" class="headerlink" title="1. 初次连接本地与远程主机"></a>1. 初次连接本地与远程主机</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@github.com... // 将本地仓库与github连接，并创建远程主机origin</span><br><span class="line">git push origin master:master // 将本地master推送的远程origin/master</span><br></pre></td></tr></table></figure>
 <h5 id="2-git-remote相关命令"><a href="#2-git-remote相关命令" class="headerlink" title="2. git remote相关命令"></a>2. git remote相关命令</h5><p>git要求每一个远程主机都要有一个独立的主机名，而git remote相关命令，就是用来管理主机名的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote 用来查看当前项目的所有主机名</span><br><span class="line">git remote -v 则可以显示主机名及其网址</span><br><span class="line">git remote show [主机名] 用来查看某个主机的详细信息</span><br><span class="line">git remote add [主机名][github网址] 用来添加一个远程主机</span><br><span class="line">git remote rm [主机名] 则会删除相应的主机</span><br></pre></td></tr></table></figure></p>
 <h5 id="3-git-push相关命令"><a href="#3-git-push相关命令" class="headerlink" title="3. git push相关命令"></a>3. git push相关命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push [远程主机名][本地分支名]:[远程分支名] 用于将本地提交内容推送到远程主机上</span><br><span class="line">git push [远程主机名] 将当前分支推送到远程主机的对应分支</span><br></pre></td></tr></table></figure>
@@ -275,6 +272,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/杂七杂八/" rel="tag">#杂七杂八</a>
+          
+        </div>
       
 
       
@@ -403,7 +406,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git远程使用技巧"><span class="nav-number">1.</span> <span class="nav-text">Git远程使用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-初次连接本地与远程主机"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 初次连接本地与远程主机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-git-remote相关命令"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. git remote相关命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-git-push相关命令"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. git push相关命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-git-pull"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. git pull</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-关于忽略同步一些文件"><span class="nav-number">1.0.5.</span> <span class="nav-text">5. 关于忽略同步一些文件</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-初次连接本地与远程主机"><span class="nav-number">1.</span> <span class="nav-text">1. 初次连接本地与远程主机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-git-remote相关命令"><span class="nav-number">2.</span> <span class="nav-text">2. git remote相关命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-git-push相关命令"><span class="nav-number">3.</span> <span class="nav-text">3. git push相关命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-git-pull"><span class="nav-number">4.</span> <span class="nav-text">4. git pull</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-关于忽略同步一些文件"><span class="nav-number">5.</span> <span class="nav-text">5. 关于忽略同步一些文件</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
