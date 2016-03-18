@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next pisces use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -60,9 +60,9 @@
 <meta name="description" content="Android入门2：从GridView控件使用到自定义Adapter在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。
 1. 小白">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jiatian Tian">
+<meta property="og:title" content="懒角落">
 <meta property="og:url" content="http://onlytjt.github.io/2015/12/08/Android2_Adapter/index.html">
-<meta property="og:site_name" content="Jiatian Tian">
+<meta property="og:site_name" content="懒角落">
 <meta property="og:description" content="Android入门2：从GridView控件使用到自定义Adapter在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。
 1. 小白">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_1.png">
@@ -71,7 +71,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_4.png">
 <meta property="og:updated_time" content="2015-12-09T04:56:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jiatian Tian">
+<meta name="twitter:title" content="懒角落">
 <meta name="twitter:description" content="Android入门2：从GridView控件使用到自定义Adapter在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。
 1. 小白">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_1.png">
@@ -81,21 +81,21 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
       userId: 0,
-      author: 'Author'
+      author: '博主'
     }
   };
 </script>
 
-  <title>  | Jiatian Tian </title>
+  <title>  | 懒角落 </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -123,7 +123,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Jiatian Tian</span>
+      <span class="site-title">懒角落</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -150,7 +150,7 @@
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
@@ -160,7 +160,7 @@
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -170,7 +170,7 @@
             
               <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -223,7 +223,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-12-08T21:40:23+08:00" content="2015-12-08">
               2015-12-08
             </time>
@@ -358,10 +358,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            站点概览
           </li>
         </ul>
       
@@ -378,12 +378,19 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">8</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
 
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
@@ -444,13 +451,13 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -503,6 +510,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
 
   
   
