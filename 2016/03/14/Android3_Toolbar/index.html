@@ -67,7 +67,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_3.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_4.jpg">
-<meta property="og:updated_time" content="2016-03-18T06:20:24.000Z">
+<meta property="og:updated_time" content="2016-03-18T06:38:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android入门3：从Android Toolbar到Material Design">
 <meta name="twitter:description" content="在Android5.0(API 21)之后，Toolbar被Google推广，逐渐走入大家视野。具体关于Actionbar和Toolbar的对比就不多啰嗦了，跟着潮流走是没错的。下面先上张简单的效果图，这是我近期在构思的一个app，帮助我们搜集宣讲会、实习、工作信息。">
@@ -251,8 +251,7 @@
         <p>在Android5.0(API 21)之后，Toolbar被Google推广，逐渐走入大家视野。具体关于Actionbar和Toolbar的对比就不多啰嗦了，跟着潮流走是没错的。下面先上张简单的效果图，这是我近期在构思的一个app，帮助我们搜集宣讲会、实习、工作信息。</p>
 <p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_1.png" alt="Android Toolbar效果图"></p>
 <a id="more"></a>
-<p>####1. 初识Material Theme</p>
-<p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_2.png" alt="Material Theme"></p>
+<h4 id="1-初识Material-Theme"><a href="#1-初识Material-Theme" class="headerlink" title="1. 初识Material Theme"></a>1. 初识Material Theme</h4><p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_2.png" alt="Material Theme"></p>
 <p>为了使用Material Design相关资源，新建工程时需要注意Min SDK需要大于等于API21。我们先来了解一下Material Theme。如上图所示，可以进行设置的部分有：</p>
 <ul>
 <li>colorPrimary：Toolbar的主体颜色</li>
@@ -260,8 +259,7 @@
 <li>textColorPrimary：Toolbar的title文字颜色</li>
 </ul>
 <p>剩下的参数也很明了了。这里所有的属性后面都跟了一个”Primary”是因为，Toolbar不仅可以在xml中出现，还能够在view中进行任意的设置，而且还可以将其当做一个Actionbar来使用~</p>
-<p>###2. 自定义Theme</p>
-<p>在<code>/res/values/</code>文件夹下我们需要新建3个xml文件</p>
+<h4 id="2-自定义Theme"><a href="#2-自定义Theme" class="headerlink" title="2. 自定义Theme"></a>2. 自定义Theme</h4><p>在<code>/res/values/</code>文件夹下我们需要新建3个xml文件</p>
 <ul>
 <li>my_theme.xml：用于自定义主题，配置主题中我们所需要的颜色</li>
 <li>default_colors_setting.xml：将颜色建立别名，方便引用和修改</li>
@@ -427,7 +425,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-添加Toolbar"><span class="nav-number">1.</span> <span class="nav-text">3. 添加Toolbar</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-初识Material-Theme"><span class="nav-number">1.</span> <span class="nav-text">1. 初识Material Theme</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-自定义Theme"><span class="nav-number">2.</span> <span class="nav-text">2. 自定义Theme</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-添加Toolbar"><span class="nav-number">3.</span> <span class="nav-text">3. 添加Toolbar</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
