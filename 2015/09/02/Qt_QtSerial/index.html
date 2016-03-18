@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="杂七杂八," />
 
 
 
@@ -57,17 +57,17 @@
 
 
 
-<meta name="description" content="Qt串口通信1. Qt串口通信类QSerialPort在Qt5的的更新中，新增了串口通信的相关接口类QSerialPort，这使得在开发者在使用Qt进行UI开发时，可以更加简单有效地实现串口通信的相关功能。开发者可以简单地通过#include&amp;lt;QSerialPort&amp;gt;，来使用系统包含的库函数。然而这里有一个非常容易忽略的问题，会导致编译时的报错。在使用QSerialPort类之前，需要">
+<meta name="description" content="1. Qt串口通信类QSerialPort在Qt5的的更新中，新增了串口通信的相关接口类QSerialPort，这使得在开发者在使用Qt进行UI开发时，可以更加简单有效地实现串口通信的相关功能。开发者可以简单地通过#include&amp;lt;QSerialPort&amp;gt;，来使用系统包含的库函数。然而这里有一个非常容易忽略的问题，会导致编译时的报错。在使用QSerialPort类之前，需要在Qt的配置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="懒角落">
+<meta property="og:title" content="Qt串口通信">
 <meta property="og:url" content="http://onlytjt.github.io/2015/09/02/Qt_QtSerial/index.html">
 <meta property="og:site_name" content="懒角落">
-<meta property="og:description" content="Qt串口通信1. Qt串口通信类QSerialPort在Qt5的的更新中，新增了串口通信的相关接口类QSerialPort，这使得在开发者在使用Qt进行UI开发时，可以更加简单有效地实现串口通信的相关功能。开发者可以简单地通过#include&amp;lt;QSerialPort&amp;gt;，来使用系统包含的库函数。然而这里有一个非常容易忽略的问题，会导致编译时的报错。在使用QSerialPort类之前，需要">
+<meta property="og:description" content="1. Qt串口通信类QSerialPort在Qt5的的更新中，新增了串口通信的相关接口类QSerialPort，这使得在开发者在使用Qt进行UI开发时，可以更加简单有效地实现串口通信的相关功能。开发者可以简单地通过#include&amp;lt;QSerialPort&amp;gt;，来使用系统包含的库函数。然而这里有一个非常容易忽略的问题，会导致编译时的报错。在使用QSerialPort类之前，需要在Qt的配置">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/QtSerial_1.png">
-<meta property="og:updated_time" content="2016-03-07T01:46:02.000Z">
+<meta property="og:updated_time" content="2016-03-18T06:18:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="懒角落">
-<meta name="twitter:description" content="Qt串口通信1. Qt串口通信类QSerialPort在Qt5的的更新中，新增了串口通信的相关接口类QSerialPort，这使得在开发者在使用Qt进行UI开发时，可以更加简单有效地实现串口通信的相关功能。开发者可以简单地通过#include&amp;lt;QSerialPort&amp;gt;，来使用系统包含的库函数。然而这里有一个非常容易忽略的问题，会导致编译时的报错。在使用QSerialPort类之前，需要">
+<meta name="twitter:title" content="Qt串口通信">
+<meta name="twitter:description" content="1. Qt串口通信类QSerialPort在Qt5的的更新中，新增了串口通信的相关接口类QSerialPort，这使得在开发者在使用Qt进行UI开发时，可以更加简单有效地实现串口通信的相关功能。开发者可以简单地通过#include&amp;lt;QSerialPort&amp;gt;，来使用系统包含的库函数。然而这里有一个非常容易忽略的问题，会导致编译时的报错。在使用QSerialPort类之前，需要在Qt的配置">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/QtSerial_1.png">
 
 
@@ -86,7 +86,7 @@
   };
 </script>
 
-  <title>  | 懒角落 </title>
+  <title> Qt串口通信 | 懒角落 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -206,7 +206,7 @@
             
             
               
-                
+                Qt串口通信
               
             
           </h1>
@@ -245,7 +245,7 @@
       
 
       
-        <h3 id="Qt串口通信"><a href="#Qt串口通信" class="headerlink" title="Qt串口通信"></a>Qt串口通信</h3><h5 id="1-Qt串口通信类QSerialPort"><a href="#1-Qt串口通信类QSerialPort" class="headerlink" title="1. Qt串口通信类QSerialPort"></a>1. Qt串口通信类QSerialPort</h5><p>在Qt5的的更新中，新增了串口通信的相关接口类QSerialPort，这使得在开发者在使用Qt进行UI开发时，可以更加简单有效地实现串口通信的相关功能。<br>开发者可以简单地通过<code>#include&lt;QSerialPort&gt;</code>，来使用系统包含的库函数。然而这里有一个非常容易忽略的问题，会导致编译时的报错。在使用QSerialPort类之前，需要在Qt的配置文件即.pro文件中添加<code>Qt += serialport</code>。</p>
+        <h5 id="1-Qt串口通信类QSerialPort"><a href="#1-Qt串口通信类QSerialPort" class="headerlink" title="1. Qt串口通信类QSerialPort"></a>1. Qt串口通信类QSerialPort</h5><p>在Qt5的的更新中，新增了串口通信的相关接口类QSerialPort，这使得在开发者在使用Qt进行UI开发时，可以更加简单有效地实现串口通信的相关功能。<br>开发者可以简单地通过<code>#include&lt;QSerialPort&gt;</code>，来使用系统包含的库函数。然而这里有一个非常容易忽略的问题，会导致编译时的报错。在使用QSerialPort类之前，需要在Qt的配置文件即.pro文件中添加<code>Qt += serialport</code>。<br><a id="more"></a></p>
 <h5 id="2-代码示例"><a href="#2-代码示例" class="headerlink" title="2. 代码示例"></a>2. 代码示例</h5><p>a. 串口的初始化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">QSerialPort *serial = new QSerialPort();</span><br><span class="line">QObject::connect(serial, SIGNAL(readyRead()), this, SLOT(recSerialData())); // 连接串口收到数据事件与读取数据函数</span><br><span class="line">serial-&gt;setPortName(&quot;COM3&quot;);</span><br><span class="line">serial-&gt;setBaudRate(QSerialPort::Baud9600);</span><br><span class="line">serial-&gt;setParity(QSerialPort::NoParity);</span><br><span class="line">serial-&gt;setDataBits(QSerialPort::Data8);</span><br><span class="line">serial-&gt;setStopBits(QSerialPort::OneStop);</span><br><span class="line">serial-&gt;setFlowControl(QSerialPort::NoFlowControl);</span><br><span class="line">if (serial-&gt;open(QIODevice::ReadWrite)) &#123;</span><br><span class="line">    qDebug()&lt;&lt;&quot;open success&quot;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    qDebug()&lt;&lt;&quot;open failed&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>b. 向串口发送数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serial-&gt;write(&quot;test&quot;);</span><br></pre></td></tr></table></figure></p>
 <p>c. 接收串口返回的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void MySerial::recSerialData()</span><br><span class="line">&#123;</span><br><span class="line">    QByteArray ba;</span><br><span class="line">    ba = serial-&gt;readAll();</span><br><span class="line">    display(ba);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -265,6 +265,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/杂七杂八/" rel="tag">#杂七杂八</a>
+          
+        </div>
       
 
       
@@ -345,7 +351,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -355,7 +361,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -389,7 +395,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt串口通信"><span class="nav-number">1.</span> <span class="nav-text">Qt串口通信</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Qt串口通信类QSerialPort"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. Qt串口通信类QSerialPort</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-代码示例"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 代码示例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-总结"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. 总结</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-附录（Mac下的串口使用Tip）"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. 附录（Mac下的串口使用Tip）</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Qt串口通信类QSerialPort"><span class="nav-number">1.</span> <span class="nav-text">1. Qt串口通信类QSerialPort</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-代码示例"><span class="nav-number">2.</span> <span class="nav-text">2. 代码示例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-总结"><span class="nav-number">3.</span> <span class="nav-text">3. 总结</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-附录（Mac下的串口使用Tip）"><span class="nav-number">4.</span> <span class="nav-text">4. 附录（Mac下的串口使用Tip）</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

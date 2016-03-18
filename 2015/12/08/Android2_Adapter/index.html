@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -57,23 +57,20 @@
 
 
 
-<meta name="description" content="Android入门2：从GridView控件使用到自定义Adapter在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。
-1. 小白">
+<meta name="description" content="在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="懒角落">
+<meta property="og:title" content="Android入门2：从GridView控件使用到自定义Adapter">
 <meta property="og:url" content="http://onlytjt.github.io/2015/12/08/Android2_Adapter/index.html">
 <meta property="og:site_name" content="懒角落">
-<meta property="og:description" content="Android入门2：从GridView控件使用到自定义Adapter在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。
-1. 小白">
+<meta property="og:description" content="在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_3.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_4.png">
-<meta property="og:updated_time" content="2015-12-09T04:56:27.000Z">
+<meta property="og:updated_time" content="2016-03-18T06:19:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="懒角落">
-<meta name="twitter:description" content="Android入门2：从GridView控件使用到自定义Adapter在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。
-1. 小白">
+<meta name="twitter:title" content="Android入门2：从GridView控件使用到自定义Adapter">
+<meta name="twitter:description" content="在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_1.png">
 
 
@@ -92,7 +89,7 @@
   };
 </script>
 
-  <title>  | 懒角落 </title>
+  <title> Android入门2：从GridView控件使用到自定义Adapter | 懒角落 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -212,7 +209,7 @@
             
             
               
-                
+                Android入门2：从GridView控件使用到自定义Adapter
               
             
           </h1>
@@ -251,7 +248,8 @@
       
 
       
-        <h3 id="Android入门2：从GridView控件使用到自定义Adapter"><a href="#Android入门2：从GridView控件使用到自定义Adapter" class="headerlink" title="Android入门2：从GridView控件使用到自定义Adapter"></a>Android入门2：从GridView控件使用到自定义Adapter</h3><p>在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。</p>
+        <p>在日常手机app的使用中，出现频率最高的便是ListView和GridView。ListView的例子是微信主界面，而GridView的例子则是支付宝的主界面，不明白的小伙伴打开手机便一目了然。然而这两个控件同时也称成为最难使用的控件，由于两个控件使用方法完全相同，今天博主以GridView为例，讲一讲我和它的故事。</p>
+<a id="more"></a>
 <h4 id="1-小白初探–使用SimpleAdapter加载本地资源"><a href="#1-小白初探–使用SimpleAdapter加载本地资源" class="headerlink" title="1. 小白初探–使用SimpleAdapter加载本地资源"></a>1. 小白初探–使用SimpleAdapter加载本地资源</h4><p>单纯学习使用GridView还是很简单的，只需要使用一个数据适配器将所需要显示的数据资源(包括图像和文本)，与布局文件中的控件连接起来即可。</p>
 <p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android2_1.png" alt="Android2_1" title="数据适配器"></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// activity_gridview.xml</span><br><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">                <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span><br><span class="line">                <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">                <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">                <span class="attr">android:paddingLeft</span>=<span class="string">"@dimen/activity_horizontal_margin"</span></span><br><span class="line">                <span class="attr">android:paddingRight</span>=<span class="string">"@dimen/activity_horizontal_margin"</span></span><br><span class="line">                <span class="attr">android:paddingTop</span>=<span class="string">"@dimen/activity_vertical_margin"</span></span><br><span class="line">                <span class="attr">android:paddingBottom</span>=<span class="string">"@dimen/activity_vertical_margin"</span></span><br><span class="line">                <span class="attr">tools:context</span>=<span class="string">"edu.sjtu.helloworld.app.GridviewActivity"</span></span><br><span class="line">                <span class="attr">android:id</span>=<span class="string">"@+id/grid"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">GridView</span></span><br><span class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/grid_test"</span></span><br><span class="line">            <span class="attr">android:numColumns</span>=<span class="string">"auto_fit"</span></span><br><span class="line">            <span class="attr">android:horizontalSpacing</span>=<span class="string">"10dp"</span></span><br><span class="line">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">GridView</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -294,21 +292,27 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/02/Android1_VideoView/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2015/11/17/OpenCV_Vimba/" rel="next" title="AVT Vimba与OpenCV环境配置">
+                <i class="fa fa-chevron-left"></i> AVT Vimba与OpenCV环境配置
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/14/Android3_Toolbar/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/14/Android3_Toolbar/" rel="prev" title="Android入门3：从Android Toolbar到Material Design">
+                Android入门3：从Android Toolbar到Material Design <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -377,7 +381,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -387,7 +391,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -421,7 +425,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android入门2：从GridView控件使用到自定义Adapter"><span class="nav-number">1.</span> <span class="nav-text">Android入门2：从GridView控件使用到自定义Adapter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-小白初探–使用SimpleAdapter加载本地资源"><span class="nav-number">1.1.</span> <span class="nav-text">1. 小白初探–使用SimpleAdapter加载本地资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-招式进阶–定制自己的数据适配器Adapter"><span class="nav-number">1.2.</span> <span class="nav-text">2. 招式进阶–定制自己的数据适配器Adapter</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Reference"><span class="nav-number">1.2.1.</span> <span class="nav-text">3. Reference</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-小白初探–使用SimpleAdapter加载本地资源"><span class="nav-number">1.</span> <span class="nav-text">1. 小白初探–使用SimpleAdapter加载本地资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-招式进阶–定制自己的数据适配器Adapter"><span class="nav-number">2.</span> <span class="nav-text">2. 招式进阶–定制自己的数据适配器Adapter</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Reference"><span class="nav-number">2.1.</span> <span class="nav-text">3. Reference</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

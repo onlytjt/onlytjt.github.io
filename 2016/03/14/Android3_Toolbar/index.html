@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -57,32 +57,20 @@
 
 
 
-<meta name="description" content="从Android Toolbar到Material Design在Android5.0(API 21)之后，Toolbar被Google推广，逐渐走入大家视野。具体关于Actionbar和Toolbar的对比就不多啰嗦了，跟着潮流走是没错的。下面先上张简单的效果图，这是我近期在构思的一个app，帮助我们搜集宣讲会、实习、工作信息。
-
-####1. 初识Material Theme
-
-为了使用Mat">
+<meta name="description" content="在Android5.0(API 21)之后，Toolbar被Google推广，逐渐走入大家视野。具体关于Actionbar和Toolbar的对比就不多啰嗦了，跟着潮流走是没错的。下面先上张简单的效果图，这是我近期在构思的一个app，帮助我们搜集宣讲会、实习、工作信息。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="懒角落">
+<meta property="og:title" content="Android入门3：从Android Toolbar到Material Design">
 <meta property="og:url" content="http://onlytjt.github.io/2016/03/14/Android3_Toolbar/index.html">
 <meta property="og:site_name" content="懒角落">
-<meta property="og:description" content="从Android Toolbar到Material Design在Android5.0(API 21)之后，Toolbar被Google推广，逐渐走入大家视野。具体关于Actionbar和Toolbar的对比就不多啰嗦了，跟着潮流走是没错的。下面先上张简单的效果图，这是我近期在构思的一个app，帮助我们搜集宣讲会、实习、工作信息。
-
-####1. 初识Material Theme
-
-为了使用Mat">
+<meta property="og:description" content="在Android5.0(API 21)之后，Toolbar被Google推广，逐渐走入大家视野。具体关于Actionbar和Toolbar的对比就不多啰嗦了，跟着潮流走是没错的。下面先上张简单的效果图，这是我近期在构思的一个app，帮助我们搜集宣讲会、实习、工作信息。">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_3.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_4.jpg">
-<meta property="og:updated_time" content="2016-03-18T05:40:52.000Z">
+<meta property="og:updated_time" content="2016-03-18T06:20:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="懒角落">
-<meta name="twitter:description" content="从Android Toolbar到Material Design在Android5.0(API 21)之后，Toolbar被Google推广，逐渐走入大家视野。具体关于Actionbar和Toolbar的对比就不多啰嗦了，跟着潮流走是没错的。下面先上张简单的效果图，这是我近期在构思的一个app，帮助我们搜集宣讲会、实习、工作信息。
-
-####1. 初识Material Theme
-
-为了使用Mat">
+<meta name="twitter:title" content="Android入门3：从Android Toolbar到Material Design">
+<meta name="twitter:description" content="在Android5.0(API 21)之后，Toolbar被Google推广，逐渐走入大家视野。具体关于Actionbar和Toolbar的对比就不多啰嗦了，跟着潮流走是没错的。下面先上张简单的效果图，这是我近期在构思的一个app，帮助我们搜集宣讲会、实习、工作信息。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_1.png">
 
 
@@ -101,7 +89,7 @@
   };
 </script>
 
-  <title>  | 懒角落 </title>
+  <title> Android入门3：从Android Toolbar到Material Design | 懒角落 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -221,7 +209,7 @@
             
             
               
-                
+                Android入门3：从Android Toolbar到Material Design
               
             
           </h1>
@@ -260,8 +248,9 @@
       
 
       
-        <h3 id="从Android-Toolbar到Material-Design"><a href="#从Android-Toolbar到Material-Design" class="headerlink" title="从Android Toolbar到Material Design"></a>从Android Toolbar到Material Design</h3><p>在Android5.0(API 21)之后，Toolbar被Google推广，逐渐走入大家视野。具体关于Actionbar和Toolbar的对比就不多啰嗦了，跟着潮流走是没错的。下面先上张简单的效果图，这是我近期在构思的一个app，帮助我们搜集宣讲会、实习、工作信息。</p>
+        <p>在Android5.0(API 21)之后，Toolbar被Google推广，逐渐走入大家视野。具体关于Actionbar和Toolbar的对比就不多啰嗦了，跟着潮流走是没错的。下面先上张简单的效果图，这是我近期在构思的一个app，帮助我们搜集宣讲会、实习、工作信息。</p>
 <p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_1.png" alt="Android Toolbar效果图"></p>
+<a id="more"></a>
 <p>####1. 初识Material Theme</p>
 <p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_2.png" alt="Material Theme"></p>
 <p>为了使用Material Design相关资源，新建工程时需要注意Min SDK需要大于等于API21。我们先来了解一下Material Theme。如上图所示，可以进行设置的部分有：</p>
@@ -309,21 +298,27 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/08/Android2_Adapter/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2015/12/08/Android2_Adapter/" rel="next" title="Android入门2：从GridView控件使用到自定义Adapter">
+                <i class="fa fa-chevron-left"></i> Android入门2：从GridView控件使用到自定义Adapter
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/18/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/18/Android入门1：使用VideoView和MediController播放视频/" rel="prev" title="Android入门1：使用VideoView和MediController播放视频">
+                Android入门1：使用VideoView和MediController播放视频 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -392,7 +387,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -402,7 +397,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -436,7 +431,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#从Android-Toolbar到Material-Design"><span class="nav-number">1.</span> <span class="nav-text">从Android Toolbar到Material Design</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-添加Toolbar"><span class="nav-number">1.1.</span> <span class="nav-text">3. 添加Toolbar</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-添加Toolbar"><span class="nav-number">1.</span> <span class="nav-text">3. 添加Toolbar</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

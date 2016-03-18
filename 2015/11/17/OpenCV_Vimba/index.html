@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="-Image Processing," />
 
 
 
@@ -57,24 +57,21 @@
 
 
 
-<meta name="description" content="AVT Vimba与OpenCV环境配置近来，由于项目需求，需要使用AVT的一款相机采集图像并进行相应的算法处理。环境的配置过程较为复杂，特此记录，以做备忘。也给有需要的小伙伴们一些key point的分享。
-搭建环境：Windows7 + Python2.7 + OpenCV3.0
-1. Python2.7由于平时的工作基本都是Mac或Linux平台，很少用到Windows，这次也把在Windo">
+<meta name="description" content="###近来，由于项目需求，需要使用AVT的一款相机采集图像并进行相应的算法处理。环境的配置过程较为复杂，特此记录，以做备忘。也给有需要的小伙伴们一些key point的分享。
+搭建环境：Windows7 + Python2.7 + OpenCV3.0">
 <meta property="og:type" content="article">
-<meta property="og:title" content="懒角落">
+<meta property="og:title" content="AVT Vimba与OpenCV环境配置">
 <meta property="og:url" content="http://onlytjt.github.io/2015/11/17/OpenCV_Vimba/index.html">
 <meta property="og:site_name" content="懒角落">
-<meta property="og:description" content="AVT Vimba与OpenCV环境配置近来，由于项目需求，需要使用AVT的一款相机采集图像并进行相应的算法处理。环境的配置过程较为复杂，特此记录，以做备忘。也给有需要的小伙伴们一些key point的分享。
-搭建环境：Windows7 + Python2.7 + OpenCV3.0
-1. Python2.7由于平时的工作基本都是Mac或Linux平台，很少用到Windows，这次也把在Windo">
+<meta property="og:description" content="###近来，由于项目需求，需要使用AVT的一款相机采集图像并进行相应的算法处理。环境的配置过程较为复杂，特此记录，以做备忘。也给有需要的小伙伴们一些key point的分享。
+搭建环境：Windows7 + Python2.7 + OpenCV3.0">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Vimba_1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Vimba_2.png">
-<meta property="og:updated_time" content="2015-11-17T13:10:23.000Z">
+<meta property="og:updated_time" content="2016-03-18T06:17:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="懒角落">
-<meta name="twitter:description" content="AVT Vimba与OpenCV环境配置近来，由于项目需求，需要使用AVT的一款相机采集图像并进行相应的算法处理。环境的配置过程较为复杂，特此记录，以做备忘。也给有需要的小伙伴们一些key point的分享。
-搭建环境：Windows7 + Python2.7 + OpenCV3.0
-1. Python2.7由于平时的工作基本都是Mac或Linux平台，很少用到Windows，这次也把在Windo">
+<meta name="twitter:title" content="AVT Vimba与OpenCV环境配置">
+<meta name="twitter:description" content="###近来，由于项目需求，需要使用AVT的一款相机采集图像并进行相应的算法处理。环境的配置过程较为复杂，特此记录，以做备忘。也给有需要的小伙伴们一些key point的分享。
+搭建环境：Windows7 + Python2.7 + OpenCV3.0">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Vimba_1.png">
 
 
@@ -93,7 +90,7 @@
   };
 </script>
 
-  <title>  | 懒角落 </title>
+  <title> AVT Vimba与OpenCV环境配置 | 懒角落 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -213,7 +210,7 @@
             
             
               
-                
+                AVT Vimba与OpenCV环境配置
               
             
           </h1>
@@ -252,17 +249,18 @@
       
 
       
-        <h3 id="AVT-Vimba与OpenCV环境配置"><a href="#AVT-Vimba与OpenCV环境配置" class="headerlink" title="AVT Vimba与OpenCV环境配置"></a>AVT Vimba与OpenCV环境配置</h3><p>近来，由于项目需求，需要使用AVT的一款相机采集图像并进行相应的算法处理。环境的配置过程较为复杂，特此记录，以做备忘。也给有需要的小伙伴们一些key point的分享。</p>
+        <p>###<br>近来，由于项目需求，需要使用AVT的一款相机采集图像并进行相应的算法处理。环境的配置过程较为复杂，特此记录，以做备忘。也给有需要的小伙伴们一些key point的分享。</p>
 <p><strong>搭建环境：Windows7 + Python2.7 + OpenCV3.0</strong></p>
-<h5 id="1-Python2-7"><a href="#1-Python2-7" class="headerlink" title="1. Python2.7"></a>1. Python2.7</h5><p>由于平时的工作基本都是Mac或Linux平台，很少用到Windows，这次也把在Windows上面安装Python的过程做简单记录。</p>
+<a id="more"></a>
+<h4 id="1-Python2-7"><a href="#1-Python2-7" class="headerlink" title="1. Python2.7"></a>1. Python2.7</h4><p>由于平时的工作基本都是Mac或Linux平台，很少用到Windows，这次也把在Windows上面安装Python的过程做简单记录。</p>
 <p>(1) 这里选择软件支持效果较好的Python2.7，<a href="https://www.python.org/downloads/" target="_blank" rel="external">Python官网</a>直接下载安装。</p>
 <p>(2) 重量级的包管理器pip。<a href="https://pypi.python.org/pypi/pip" target="_blank" rel="external">Pip官网</a>下载二进制文件，解压到某个文件夹后，使用cmd进行安装。步骤是，cd到相应目录，输入<code>python setup.py install</code>。</p>
 <p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Vimba_1.png" alt="安装pip"></p>
 <p>(3) 安装完毕后使用pip工具安装一些相当有用的lib，比如numpy，scipy，matplotlib等等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install numpy</span><br><span class="line">pip install scipy</span><br><span class="line">pip install matplotlib</span><br></pre></td></tr></table></figure></p>
-<h5 id="2-OpenCV3-0"><a href="#2-OpenCV3-0" class="headerlink" title="2. OpenCV3.0"></a>2. OpenCV3.0</h5><p>(1) 安装包在<a href="http://opencv.org/" target="_blank" rel="external">OpenCV官网</a>下载，网速原因，博主下载了好几次才成功。安装过程其实只是简单的解压缩。</p>
+<h4 id="2-OpenCV3-0"><a href="#2-OpenCV3-0" class="headerlink" title="2. OpenCV3.0"></a>2. OpenCV3.0</h4><p>(1) 安装包在<a href="http://opencv.org/" target="_blank" rel="external">OpenCV官网</a>下载，网速原因，博主下载了好几次才成功。安装过程其实只是简单的解压缩。</p>
 <p>(2) 由于使用Python API，进入OpenCV安装目录下<code>/build/python/2.7/cv2.pyd</code>。将cv2.pyd复制到Python安装目录下的<code>/Lib/site-packages/</code>。</p>
 <p>至此就可以使用Python进行OpenCV的相关操作了。</p>
-<h5 id="3-AVT-Vimba"><a href="#3-AVT-Vimba" class="headerlink" title="3. AVT Vimba"></a>3. AVT Vimba</h5><p>(1) <a href="https://www.alliedvision.com/en/products/software.html" target="_blank" rel="external">AVT官网</a>下载并安装。由于官方仅提供了C/C++的API，因此想使用Python的同学有几个选择：使用ctypes，或者使用pymba。</p>
+<h4 id="3-AVT-Vimba"><a href="#3-AVT-Vimba" class="headerlink" title="3. AVT Vimba"></a>3. AVT Vimba</h4><p>(1) <a href="https://www.alliedvision.com/en/products/software.html" target="_blank" rel="external">AVT官网</a>下载并安装。由于官方仅提供了C/C++的API，因此想使用Python的同学有几个选择：使用ctypes，或者使用pymba。</p>
 <p>(2) 这里要感谢伟大的Github，给我们节约了无数的时间，也让我们能够学习到最先进的代码。pymba的Github地址，<a href="">https://github.com/morefigs/pymba</a>。这里安装过程同pip，下载解压到某个文件夹后，使用cmd shell，cd到相应目录，输入<code>python setup.py install</code>。</p>
 <p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Vimba_2.png" alt="安装pymba"></p>
 <p>(3) 这里要注意两点。一、pymba目前仅支持Vimba1.3的版本，因此下载更高版本的同学在后续使用过程中，可能会遇到各种Bug。二、在安装pymba之后，需要更改pymba默认索引的VimbaC.dll的路径。具体更改方法为找到<code>/pymba/vimbadll.py</code>将其中的Line13和Line16更改为自己VimbaC.dll的路径。我的如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vimbaC_path = r&apos;D:\Program Files\Allied Vision\Vimba_1.4\VimbaC\Bin\VimbaC.dll&apos;</span><br></pre></td></tr></table></figure></p>
@@ -283,6 +281,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Image-Processing/" rel="tag">#-Image Processing</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
@@ -296,8 +300,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/12/02/Android1_VideoView/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/12/08/Android2_Adapter/" rel="prev" title="Android入门2：从GridView控件使用到自定义Adapter">
+                Android入门2：从GridView控件使用到自定义Adapter <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -366,7 +370,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -376,7 +380,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -410,7 +414,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AVT-Vimba与OpenCV环境配置"><span class="nav-number">1.</span> <span class="nav-text">AVT Vimba与OpenCV环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Python2-7"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. Python2.7</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-OpenCV3-0"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. OpenCV3.0</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-AVT-Vimba"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. AVT Vimba</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Python2-7"><span class="nav-number">1.</span> <span class="nav-text">1. Python2.7</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-OpenCV3-0"><span class="nav-number">2.</span> <span class="nav-text">2. OpenCV3.0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-AVT-Vimba"><span class="nav-number">3.</span> <span class="nav-text">3. AVT Vimba</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
