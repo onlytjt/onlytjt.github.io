@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>从Android Toolbar到Material Design | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="从Android Toolbar到Material Design在Android5.0(API 21)之后，Toolbar被Google推广，逐渐走入大家视野。具体关于Actionbar和Toolbar的对比就不多啰嗦了，跟着潮流走是没错的。下面先上张简单的效果图，这是我近期在构思的一个app，帮助我们搜集宣讲会、实习、工作信息。
+
+####1. 初识Material Theme
+
+为了使用Mat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从Android Toolbar到Material Design">
+<meta property="og:url" content="http://yoursite.com/2016/03/18/Android3_Toolbar/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="从Android Toolbar到Material Design在Android5.0(API 21)之后，Toolbar被Google推广，逐渐走入大家视野。具体关于Actionbar和Toolbar的对比就不多啰嗦了，跟着潮流走是没错的。下面先上张简单的效果图，这是我近期在构思的一个app，帮助我们搜集宣讲会、实习、工作信息。
+
+####1. 初识Material Theme
+
+为了使用Mat">
+<meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_4.jpg">
+<meta property="og:updated_time" content="2016-03-18T05:10:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从Android Toolbar到Material Design">
+<meta name="twitter:description" content="从Android Toolbar到Material Design在Android5.0(API 21)之后，Toolbar被Google推广，逐渐走入大家视野。具体关于Actionbar和Toolbar的对比就不多啰嗦了，跟着潮流走是没错的。下面先上张简单的效果图，这是我近期在构思的一个app，帮助我们搜集宣讲会、实习、工作信息。
+
+####1. 初识Material Theme
+
+为了使用Mat">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Android3_Toolbar" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/18/Android3_Toolbar/" class="article-date">
+  <time datetime="2016-03-18T06:53:30.000Z" itemprop="datePublished">2016-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      从Android Toolbar到Material Design
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="从Android-Toolbar到Material-Design"><a href="#从Android-Toolbar到Material-Design" class="headerlink" title="从Android Toolbar到Material Design"></a>从Android Toolbar到Material Design</h3><p>在Android5.0(API 21)之后，Toolbar被Google推广，逐渐走入大家视野。具体关于Actionbar和Toolbar的对比就不多啰嗦了，跟着潮流走是没错的。下面先上张简单的效果图，这是我近期在构思的一个app，帮助我们搜集宣讲会、实习、工作信息。</p>
+<p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_1.png" alt="Android Toolbar效果图"></p>
+<p>####1. 初识Material Theme</p>
+<p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_2.png" alt="Material Theme"></p>
+<p>为了使用Material Design相关资源，新建工程时需要注意Min SDK需要大于等于API21。我们先来了解一下Material Theme。如上图所示，可以进行设置的部分有：</p>
+<ul>
+<li>colorPrimary：Toolbar的主体颜色</li>
+<li>colorPrimaryDark：Toolbar上方的背景颜色，一般为深色，会是的app看起来更有层次感</li>
+<li>textColorPrimary：Toolbar的title文字颜色</li>
+</ul>
+<p>剩下的参数也很明了了。这里所有的属性后面都跟了一个”Primary”是因为，Toolbar不仅可以在xml中出现，还能够在view中进行任意的设置，而且还可以将其当做一个Actionbar来使用~</p>
+<p>###2. 自定义Theme</p>
+<p>在<code>/res/values/</code>文件夹下我们需要新建3个xml文件</p>
+<ul>
+<li>my_theme.xml：用于自定义主题，配置主题中我们所需要的颜色</li>
+<li>default_colors_setting.xml：将颜色建立别名，方便引用和修改</li>
+<li>android_material_design_colors.xml：调色板，用于存储一些色彩</li>
+</ul>
+<p>关于android_material_design_colors.xml，我直接下载了google给出的色彩调色方案，添加到工程中，可以直接引用其中的颜色。下载地址：<a href="https://gist.github.com/daniellevass/b0b8cfa773488e138037。另外有一个比较不错的网站，[Material" target="_blank" rel="external">https://gist.github.com/daniellevass/b0b8cfa773488e138037。另外有一个比较不错的网站，[Material</a> Palette](<a href="https://gist.github.com/daniellevass/b0b8cfa773488e138037" target="_blank" rel="external">https://gist.github.com/daniellevass/b0b8cfa773488e138037</a>) 可以在线预览我们的颜色搭配，小伙伴们不妨都去试试，能给设计省下不少时间~</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/res/values/default_colors_setting.mxl</span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="comment">&lt;!-- 主要目的是给常用颜色设置别名，方便引用和更改 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"color_primary"</span>&gt;</span>@color/md_light_blue_400<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"color_primary_dark"</span>&gt;</span>@color/md_light_blue_700<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"color_primary_text"</span>&gt;</span>@android:color/white<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/res/values/my_theme.xml</span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"MyMaterialTheme"</span> <span class="attr">parent</span>=<span class="string">"MyMaterialTheme.Base"</span>&gt;</span><span class="undefined"></span><br><span class="line">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"MyMaterialTheme.Base"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat"</span>&gt;</span><span class="xml"></span><br><span class="line">      	<span class="comment">&lt;!-- 移除Actionbar，以下两句缺一不可 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"windowNoTitle"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"windowActionBar"</span>&gt;</span>false<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Toolbar主体颜色 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:colorPrimary"</span>&gt;</span>@color/color_primary<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Toolbar上方的背景颜色,一般比主体颜色深 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:colorPrimaryDark"</span>&gt;</span>@color/color_primary_dark<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 其他可以使用的属性参数:colorAccent, colorControlNormal,</span><br><span class="line">        colorControlActivated, colorControlHighlight, colorSwitchThumbNormal --&gt;</span></span><br><span class="line">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>完成了我们自己的Theme，接下来我们要在app中使用我们的Theme，修改<code>/res/AndroidManifest.xml</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application</span></span><br><span class="line">        <span class="attr">android:allowBackup</span>=<span class="string">"true"</span></span><br><span class="line">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_launcher"</span></span><br><span class="line">        <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span></span><br><span class="line">        <span class="attr">android:theme</span>=<span class="string">"@style/MyMaterialTheme"</span> &gt;</span></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>此时运行程序，便可以看到我们自定义的主题已经生效，但此时app的上方还是空空如也，应为我们还没有为其添加Toolbar。</p>
+<p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_3.png" alt=""></p>
+<h4 id="3-添加Toolbar"><a href="#3-添加Toolbar" class="headerlink" title="3. 添加Toolbar"></a>3. 添加Toolbar</h4><p>首先我们要给Toolbal新建一个布局文件，/res/layout/toolbar.xml。这里使用v7包中的Toolbar。使用gradle的同学记得添加依赖。<code>compile &#39;com.android.support:appcompat-v7:23.1.1&#39;</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">android:android.support.v7.widget.Toolbar</span></span><br><span class="line">        <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/toolbar"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:minHeight</span>=<span class="string">"?attr/actionBarSize"</span></span><br><span class="line">        <span class="attr">android:background</span>=<span class="string">"@color/color_primary"</span></span><br><span class="line">/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后我们在主布局文件中引入toolbar，/res/layout/activity_main.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">                <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span><br><span class="line">                <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">                <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">                <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span><br><span class="line">                <span class="attr">tools:context</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">include</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/toolbar"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:layout_alignParentTop</span>=<span class="string">"true"</span></span><br><span class="line">        <span class="attr">layout</span>=<span class="string">"@layout/toolbar"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">            <span class="attr">android:text</span>=<span class="string">"@string/hello_world"</span></span><br><span class="line">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">            <span class="attr">android:layout_below</span>=<span class="string">"@+id/toolbar"</span></span><br><span class="line">    /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>最后，我们在<code>onCreate()</code>中进行设置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">      </span><br><span class="line">      	<span class="keyword">private</span> Toolbar mToolbar;</span><br><span class="line">    	<span class="keyword">private</span> ActionBar mActionbar;</span><br><span class="line">      </span><br><span class="line">        mToolbar = (Toolbar) findViewById(R.id.toolbar);</span><br><span class="line">        setSupportActionBar(mToolbar);</span><br><span class="line">        mActionbar = getSupportActionBar();  <span class="comment">// 转换为Actionbar操作</span></span><br><span class="line">        mActionbar.setTitle(<span class="string">"爱实习  爱工作"</span>);  <span class="comment">// 设置toolbar标题</span></span><br><span class="line">      	<span class="comment">// 设置toolbar左侧icon，也成为Navigation Icon</span></span><br><span class="line">        mToolbar.setNavigationIcon(R.mipmap.ic_menu_white_36dp); </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>完成以上步骤就可以得到最终的效果图啦。</p>
+<p>这里还想推荐给小伙伴的是github上的一个开源项目：<a href="https://github.com/mikepenz/Android-Iconics" target="_blank" rel="external">mikepenz/Android-Iconics</a>。这里有许许多多基于Material Design的icon，貌似这是个大神~他的SlideMenu的插件也很好用。希望能给小伙伴省下一些寻找资源的时间，开发更加顺利。</p>
+<p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android3_4.jpg" alt=""></p>
+<hr>
+<p><strong>By tjt</strong></p>
+<p><strong>2016.03.14</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/18/Android3_Toolbar/" data-id="cilx94j7900002joydgturytu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/18/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/03/18/Android3_Toolbar/">从Android Toolbar到Material Design</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/18/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
