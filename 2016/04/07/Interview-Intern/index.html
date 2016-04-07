@@ -57,16 +57,16 @@
 
 
 
-<meta name="description" content="git作为强大的版本管理软件，已经得到了广泛的应用，很多人对于本地的git操作已经非常熟悉了。然而有的时候，我们也需要一个远程的，类似云的仓库来存储我们的一些代码。github给予了我们不限量的空间来使用，今天我也来简单地总结一下在git远程使用时经常会用到的一些命令与技巧。">
+<meta name="description" content="又到了一年的春天，各大公司的暑期实习也约了起来。为了9月份能够更加从容地面对找工作，大家都纷纷加入到暑期实习的笔试面试当中去。本文旨在记录自己的一些教训，给自己形成一个备忘和努力目标。反正博客的人气也基本没有~我就自娱自乐了:)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git远程使用技巧">
-<meta property="og:url" content="http://onlytjt.github.io/2015/09/06/Git/index.html">
+<meta property="og:title" content="暑期实习的面试备忘">
+<meta property="og:url" content="http://onlytjt.github.io/2016/04/07/Interview-Intern/index.html">
 <meta property="og:site_name" content="懒角落">
-<meta property="og:description" content="git作为强大的版本管理软件，已经得到了广泛的应用，很多人对于本地的git操作已经非常熟悉了。然而有的时候，我们也需要一个远程的，类似云的仓库来存储我们的一些代码。github给予了我们不限量的空间来使用，今天我也来简单地总结一下在git远程使用时经常会用到的一些命令与技巧。">
-<meta property="og:updated_time" content="2016-03-18T06:27:15.000Z">
+<meta property="og:description" content="又到了一年的春天，各大公司的暑期实习也约了起来。为了9月份能够更加从容地面对找工作，大家都纷纷加入到暑期实习的笔试面试当中去。本文旨在记录自己的一些教训，给自己形成一个备忘和努力目标。反正博客的人气也基本没有~我就自娱自乐了:)">
+<meta property="og:updated_time" content="2016-04-07T04:40:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git远程使用技巧">
-<meta name="twitter:description" content="git作为强大的版本管理软件，已经得到了广泛的应用，很多人对于本地的git操作已经非常熟悉了。然而有的时候，我们也需要一个远程的，类似云的仓库来存储我们的一些代码。github给予了我们不限量的空间来使用，今天我也来简单地总结一下在git远程使用时经常会用到的一些命令与技巧。">
+<meta name="twitter:title" content="暑期实习的面试备忘">
+<meta name="twitter:description" content="又到了一年的春天，各大公司的暑期实习也约了起来。为了9月份能够更加从容地面对找工作，大家都纷纷加入到暑期实习的笔试面试当中去。本文旨在记录自己的一些教训，给自己形成一个备忘和努力目标。反正博客的人气也基本没有~我就自娱自乐了:)">
 
 
 
@@ -84,7 +84,7 @@
   };
 </script>
 
-  <title> Git远程使用技巧 | 懒角落 </title>
+  <title> 暑期实习的面试备忘 | 懒角落 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -214,7 +214,7 @@
             
             
               
-                Git远程使用技巧
+                暑期实习的面试备忘
               
             
           </h1>
@@ -226,8 +226,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-06T14:26:07+08:00" content="2015-09-06">
-              2015-09-06
+            <time itemprop="dateCreated" datetime="2016-04-07T11:50:34+08:00" content="2016-04-07">
+              2016-04-07
             </time>
           </span>
 
@@ -237,8 +237,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/06/Git/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/06/Git/" itemprop="commentsCount"></span>
+                <a href="/2016/04/07/Interview-Intern/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/07/Interview-Intern/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -260,26 +260,59 @@
       
 
       
-        <p>git作为强大的版本管理软件，已经得到了广泛的应用，很多人对于本地的git操作已经非常熟悉了。然而有的时候，我们也需要一个远程的，类似云的仓库来存储我们的一些代码。github给予了我们不限量的空间来使用，今天我也来简单地总结一下在git远程使用时经常会用到的一些命令与技巧。<br><a id="more"></a></p>
-<h5 id="1-初次连接本地与远程主机"><a href="#1-初次连接本地与远程主机" class="headerlink" title="1. 初次连接本地与远程主机"></a>1. 初次连接本地与远程主机</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@github.com... // 将本地仓库与github连接，并创建远程主机origin</span><br><span class="line">git push origin master:master // 将本地master推送的远程origin/master</span><br></pre></td></tr></table></figure>
-<h5 id="2-git-remote相关命令"><a href="#2-git-remote相关命令" class="headerlink" title="2. git remote相关命令"></a>2. git remote相关命令</h5><p>git要求每一个远程主机都要有一个独立的主机名，而git remote相关命令，就是用来管理主机名的。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote 用来查看当前项目的所有主机名</span><br><span class="line">git remote -v 则可以显示主机名及其网址</span><br><span class="line">git remote show [主机名] 用来查看某个主机的详细信息</span><br><span class="line">git remote add [主机名][github网址] 用来添加一个远程主机</span><br><span class="line">git remote rm [主机名] 则会删除相应的主机</span><br></pre></td></tr></table></figure>
-<h5 id="3-git-push相关命令"><a href="#3-git-push相关命令" class="headerlink" title="3. git push相关命令"></a>3. git push相关命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push [远程主机名][本地分支名]:[远程分支名] 用于将本地提交内容推送到远程主机上</span><br><span class="line">git push [远程主机名] 将当前分支推送到远程主机的对应分支</span><br></pre></td></tr></table></figure>
-<h5 id="4-git-pull"><a href="#4-git-pull" class="headerlink" title="4. git pull"></a>4. git pull</h5><p>由于git fetch在取回服务器上的程序更新时，还需要手动进行合并，对于一些小型的程序而言，git pull命令则更为实用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git pull [远程主机名][远程分支名]:[本地分支名] 取回远程某个分支更新，并与本地指定分支合并</span><br><span class="line">git pull [远程主机名][远程分支名] 取回远程分支的更新，并与本地当前分支合并</span><br></pre></td></tr></table></figure>
-<p>虽然以上命令都有相应的简化版本，但是做为一个版本管理软件，最为重要的特性是清晰地版本与分支管理。因此，我推荐使用完整的git命令，这会使大家对自己的代码版本架构有更清晰地理解。</p>
-<h5 id="5-关于忽略同步一些文件"><a href="#5-关于忽略同步一些文件" class="headerlink" title="5. 关于忽略同步一些文件"></a>5. 关于忽略同步一些文件</h5><p>在使用git的时候，我们往往希望在同步过程中忽略一些涉及私人信息的文件，如使用Mac时的.DS_Store文件。此时也很简单，只需要添加名为<code>.gitignore</code>的文件并在其中添加相应的忽略文件即可。<br>这里的文件名使用通用的正则表达式进行匹配。</p>
-<ul>
-<li>斜杠”/“表示目录</li>
-<li>星号”*”表示通配多个字符</li>
-<li>问好”?”表示通配单个字符</li>
-<li>方括号”[ ]”包含单个字符的匹配列表</li>
-<li>叹号”!”表示不忽略匹配到得文件或目录</li>
+        <p>又到了一年的春天，各大公司的暑期实习也约了起来。为了9月份能够更加从容地面对找工作，大家都纷纷加入到暑期实习的笔试面试当中去。本文旨在记录自己的一些教训，给自己形成一个备忘和努力目标。反正博客的人气也基本没有~我就自娱自乐了:)</p>
+<a id="more"></a>
+<h4 id="一、网易"><a href="#一、网易" class="headerlink" title="一、网易"></a>一、网易</h4><p>职位：Java公共技术开发(杭研)</p>
+<p>网易的面试一天面了3轮，两轮技术面，最后一轮HR面。目前为止，结果还不清楚。</p>
+<h4 id="1-一面"><a href="#1-一面" class="headerlink" title="1. 一面"></a>1. 一面</h4><ul>
+<li>关于异常捕获和处理，try…catch…finally。</li>
+<li>JVM内存管理和垃圾回收算法。</li>
+<li>讲了一下我做的Android App，问我遇到的最棘手的问题及解决方案。</li>
+<li>给定100万个文件，文件中存放着很多字符串，用户要搜索某个字符串s，返回哪个文件第几行第几列含有s。设计一套系统，包括存储结构，搜索算法。</li>
+<li>你了解哪些设计模式</li>
+<li>手写代码。两个有序链表归并。</li>
 </ul>
-<p>关于正则表达式，不了解的读者可以戳<a href="http://baike.baidu.com/link?url=1mpBMLj2cGNyJVt4a3q8dequpHlfR-oCqBEhRDb4nLLLTMwy4aXbcxF1neUUkTNSlgT9R0yMIvhL4yZxmBrNZ_" target="_blank" rel="external">百度百科</a>，后面也许我会写一篇详细的文章介绍正则表达式，在coding中还是十分常用的。</p>
-<p>git命令参考文章：<a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/06/git_remote.html</a></p>
+<p>对于第四个题，我当时也没有什么很好的思路，就想把文件存到HashMap<filename, position="">中，这里面的Position就是自定义的类，对应匹配出字符串在当前文件中的位置。首先对文件进行遍历，然后使用KMP算法匹配字符串。让我把关键部分的几个代码写一下。一开始也是很懵逼，面试官真的很nice，一点一点引导。虽然最后还是感觉实现的效率不够高，但是总算是把这个系统自圆其说了。</filename,></p>
+<p>关于最后一个手写代码题，就有点不好意思了。我本以为很简单。。。但是各种小细节没处理好。在面试官提示下，花了一些时间才完完全全调整好。感觉表现不是非常好。回来一定要练习手写代码，还要注意防御性判断！</p>
+<h4 id="2-二面"><a href="#2-二面" class="headerlink" title="2. 二面"></a>2. 二面</h4><ul>
+<li>讲一下Java中有哪些Map</li>
+<li>字节流和字符流的区别</li>
+<li>Java同步方式</li>
+<li>你了解哪些设计模式</li>
+<li>讲一下几种排序算法的原理</li>
+<li>手写代码。二分查找。</li>
+</ul>
+<p>二面进行时间比较短，会就问得比较深，不会就过。代码题比较简单，也基本一次就对了，因此应该来说还是比较顺利。</p>
+<p>第一题，Java中的Map好像用得比较多的是HashMap，TreeMap，HashTable。</p>
+<p>第三题，我回答的Java的同步方式就是synchronized和lock。volatile不知道算不算，当时也忘记说了。</p>
+<h4 id="3-HR面"><a href="#3-HR面" class="headerlink" title="3. HR面"></a>3. HR面</h4><ul>
+<li>为什么想做程序员</li>
+<li>在平时开发过程中，哪个项目最深刻，为什么</li>
+<li>为什么投我们部门(Java公共技术开发)</li>
+<li>有木有投其他实习，如果都过了怎么选择</li>
+<li>暑期能不能来实习</li>
+<li>对实习薪资有什么要求</li>
+</ul>
+<p>中午在网易吃了午饭，网易食堂竟然不用刷卡，随便吃的。。。HR姐姐也挺和善，其实就是和你聊聊天。</p>
+<p>总的来说，网易给我的感觉还是很好的，更加注重的是你在解题过程中，思维发展的过程，如何一步一步进行优化。</p>
+<p><strong>总结一下，JVM，GC，设计模式简直是Java面试必问。。。</strong></p>
 <hr>
-<p>By tjt<br>2015.09.06</p>
+<h4 id="二、阿里巴巴"><a href="#二、阿里巴巴" class="headerlink" title="二、阿里巴巴"></a>二、阿里巴巴</h4><p>职位：客户端开发工程师(杭州)</p>
+<p>投了阿里之后，没有收到笔试通知，某天晚上直接就来了电话面试。目前为止，只进行了电面，后续消息还在等。</p>
+<h4 id="1-电面"><a href="#1-电面" class="headerlink" title="1. 电面"></a>1. 电面</h4><ul>
+<li>先自我介绍一下</li>
+<li>讲了一下我的Android App，讲了一下RxJava</li>
+<li>Android进程间如何通信</li>
+<li>Android多线程</li>
+<li>我说我看过源码，就讲了一下view的绘制过程</li>
+<li>你了解哪些设计模式</li>
+<li>JVM内存管理</li>
+<li>JVM类加载机制</li>
+</ul>
+<p>因为一直在写自己的App，对这些部分都很熟悉，基本上都回答出来了，感觉还不错。不过目前还没后续消息，只能，未完待续。。。。</p>
+<hr>
+<p><strong>By tjt</strong></p>
+<p><strong>2016.04.07</strong></p>
 
       
     </div>
@@ -303,17 +336,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/02/Qt_QtSerial/" rel="next" title="Qt串口通信">
-                <i class="fa fa-chevron-left"></i> Qt串口通信
+              <a href="/2016/03/14/Android3_Toolbar/" rel="next" title="Android入门3：从Android Toolbar到Material Design">
+                <i class="fa fa-chevron-left"></i> Android入门3：从Android Toolbar到Material Design
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/17/OpenCV_Vimba/" rel="prev" title="AVT Vimba与OpenCV环境配置">
-                AVT Vimba与OpenCV环境配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -339,8 +368,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/09/06/Git/"
-           data-title="Git远程使用技巧" data-url="http://onlytjt.github.io/2015/09/06/Git/">
+      <div class="ds-thread" data-thread-key="2016/04/07/Interview-Intern/"
+           data-title="暑期实习的面试备忘" data-url="http://onlytjt.github.io/2016/04/07/Interview-Intern/">
       </div>
     
   </div>
@@ -471,7 +500,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-初次连接本地与远程主机"><span class="nav-number">1.</span> <span class="nav-text">1. 初次连接本地与远程主机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-git-remote相关命令"><span class="nav-number">2.</span> <span class="nav-text">2. git remote相关命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-git-push相关命令"><span class="nav-number">3.</span> <span class="nav-text">3. git push相关命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-git-pull"><span class="nav-number">4.</span> <span class="nav-text">4. git pull</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-关于忽略同步一些文件"><span class="nav-number">5.</span> <span class="nav-text">5. 关于忽略同步一些文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、网易"><span class="nav-number">1.</span> <span class="nav-text">一、网易</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-一面"><span class="nav-number">2.</span> <span class="nav-text">1. 一面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-二面"><span class="nav-number">3.</span> <span class="nav-text">2. 二面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-HR面"><span class="nav-number">4.</span> <span class="nav-text">3. HR面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、阿里巴巴"><span class="nav-number">5.</span> <span class="nav-text">二、阿里巴巴</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-电面"><span class="nav-number">6.</span> <span class="nav-text">1. 电面</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
