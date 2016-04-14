@@ -1,0 +1,777 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="自Android5.0 Lollipop发布以来，Material Design在Android App中爆炸性增长，涌现出了一批优秀的、拥有Android风格的App。今天的主题是使用新的android.support.design包中的TabLayout配合ViewPager以及实现经典的Android风格—顶部标签页。
+我将Tab加到了我在做的“ijob” app中，先来看一下最终的效果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android4_使用TabLayout和ViewPager实现顶部标签页">
+<meta property="og:url" content="http://onlytjt.github.io/2016/04/14/Android4_TabLayout/index.html">
+<meta property="og:site_name" content="懒角落">
+<meta property="og:description" content="自Android5.0 Lollipop发布以来，Material Design在Android App中爆炸性增长，涌现出了一批优秀的、拥有Android风格的App。今天的主题是使用新的android.support.design包中的TabLayout配合ViewPager以及实现经典的Android风格—顶部标签页。
+我将Tab加到了我在做的“ijob” app中，先来看一下最终的效果。">
+<meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android4_1.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android4_2.png">
+<meta property="og:updated_time" content="2016-04-14T13:48:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android4_使用TabLayout和ViewPager实现顶部标签页">
+<meta name="twitter:description" content="自Android5.0 Lollipop发布以来，Material Design在Android App中爆炸性增长，涌现出了一批优秀的、拥有Android风格的App。今天的主题是使用新的android.support.design包中的TabLayout配合ViewPager以及实现经典的Android风格—顶部标签页。
+我将Tab加到了我在做的“ijob” app中，先来看一下最终的效果。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android4_1.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android4_使用TabLayout和ViewPager实现顶部标签页 | 懒角落 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">懒角落</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">很靠谱，有点宅</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-android">
+          <a href="/tags/Android" rel="section">
+            
+            Android
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android4_使用TabLayout和ViewPager实现顶部标签页
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-14T19:54:34+08:00" content="2016-04-14">
+              2016-04-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/14/Android4_TabLayout/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/Android4_TabLayout/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>自Android5.0 Lollipop发布以来，Material Design在Android App中爆炸性增长，涌现出了一批优秀的、拥有Android风格的App。今天的主题是使用新的<code>android.support.design</code>包中的TabLayout配合ViewPager以及实现经典的Android风格—顶部标签页。</p>
+<p>我将Tab加到了我在做的“ijob” app中，先来看一下最终的效果。</p>
+<p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android4_1.gif" alt=""></p>
+<a id="more"></a>
+<h4 id="创建布局文件"><a href="#创建布局文件" class="headerlink" title="创建布局文件"></a>创建布局文件</h4><p>布局文件没有什么好说的，比较简单，注意区分控件所在的不同support library。还想多啰嗦几句。(a) 在Android5.0以后可以轻松地给控件设置阴影效果，<code>android:elevation=&quot;8dp&quot;</code>。(b) 如果阴影效果没有如期显示，多半是因为忘记给控件设置背景颜色了，其实只要设置了背景颜色，阴影效果就出来了。<code>android:background=&quot;@android:color/white&quot;</code></p>
+<p>除此之外，为了实现我们想要的效果，我们可以设置TabLayout的一些属性，包括Tab高度、Tab颜色，Tab中Indicator的高度及颜色。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--activity_main.xml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span><br><span class="line">    <span class="attr">tools:context</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">android.support.v7.widget.Toolbar</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/toolbar"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:background</span>=<span class="string">"@color/color_primary"</span></span><br><span class="line">        <span class="attr">android:elevation</span>=<span class="string">"8dp"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">android.support.design.widget.TabLayout</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/tablayout"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">app:tabBackground</span>=<span class="string">"@color/color_primary"</span></span><br><span class="line">        <span class="attr">app:tabTextAppearance</span>=<span class="string">"@style/MyTabText"</span></span><br><span class="line">        <span class="attr">app:tabIndicatorColor</span>=<span class="string">"@android:color/white"</span></span><br><span class="line">        <span class="attr">app:tabIndicatorHeight</span>=<span class="string">"3dp"</span></span><br><span class="line">        <span class="attr">android:background</span>=<span class="string">"@android:color/white"</span></span><br><span class="line">        <span class="attr">android:elevation</span>=<span class="string">"8dp"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">android.support.v4.view.ViewPager</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/viewpager"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"0dp"</span></span><br><span class="line">        <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></span><br><span class="line">        <span class="attr">android:background</span>=<span class="string">"@android:color/white"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="创建ViewPager适配器"><a href="#创建ViewPager适配器" class="headerlink" title="创建ViewPager适配器"></a>创建ViewPager适配器</h4><p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Android4_2.png" alt=""></p>
+<p>ViewPager的适配器主要是连接TabLayout和将要显示的多个Fragment。由于ViewPager是在v4的包中，Fragment在v4和android.app的包中都含有，如果发生不对应情况，很容易挂掉。所以，在这里罗列出了相关包的版本建议。</p>
+<ul>
+<li><code>import android.app.Fragment;</code></li>
+<li><code>import android.app.FragmentManager;</code></li>
+<li><code>import android.support.v13.app.FragmentPagerAdapter;</code></li>
+<li><code>import android.support.v4.view.ViewPager;</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MyFragmentPagerAdapter.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFragmentPagerAdapter</span> <span class="keyword">extends</span> <span class="title">FragmentPagerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> PAGE_COUNT = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">private</span> String[] tableTitle = <span class="keyword">new</span> String[] &#123;<span class="string">"宣讲会"</span>, <span class="string">"实习"</span>, <span class="string">"工作"</span>&#125;;</span><br><span class="line">    <span class="keyword">private</span> Context mContext;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Fragment&gt; mFragmentTab;</span><br><span class="line">    <span class="keyword">private</span> SeminarFragment mSeminarFragment;</span><br><span class="line">    <span class="keyword">private</span> InternFragment mInternFragment;</span><br><span class="line">    <span class="keyword">private</span> JobFragment mJobFragment;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyFragmentPagerAdapter</span><span class="params">(FragmentManager fm, Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(fm);</span><br><span class="line">        mContext = context;</span><br><span class="line">        initFragmentTab();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Fragment <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mFragmentTab.get(position);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> PAGE_COUNT;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CharSequence <span class="title">getPageTitle</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> tableTitle[position];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initFragmentTab</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mSeminarFragment = <span class="keyword">new</span> SeminarFragment();</span><br><span class="line">        mInternFragment = <span class="keyword">new</span> InternFragment();</span><br><span class="line">        mJobFragment = <span class="keyword">new</span> JobFragment();</span><br><span class="line">        mFragmentTab = <span class="keyword">new</span> ArrayList&lt;Fragment&gt;();</span><br><span class="line">        mFragmentTab.add(mSeminarFragment);</span><br><span class="line">        mFragmentTab.add(mInternFragment);</span><br><span class="line">        mFragmentTab.add(mJobFragment);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="设置TabLayout"><a href="#设置TabLayout" class="headerlink" title="设置TabLayout"></a>设置TabLayout</h4><p>最后一步就是在我们的MainActivity中对TabLayout进行设置，即把TabLayout控件与Adapter双向关联。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MainActitity.java</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initTabLayout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	MyFragmentPagerAdapter adapter = <span class="keyword">new</span> MyFragmentPagerAdapter(getFragmentManager(), <span class="keyword">this</span>);</span><br><span class="line">    ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);</span><br><span class="line">    TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);</span><br><span class="line">    viewPager.setAdapter(adapter);</span><br><span class="line">    tabLayout.setupWithViewPager(viewPager);</span><br><span class="line">    tabLayout.setTabMode(TabLayout.MODE_FIXED);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="引用和连接"><a href="#引用和连接" class="headerlink" title="引用和连接"></a>引用和连接</h4><ol>
+<li><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0731/3247.html" target="_blank" rel="external">http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0731/3247.html</a></li>
+<li>Magerial Design新控件：<a href="http://www.jcodecraeer.com/a/anzhuokaifa/developer/2015/0531/2958.html" target="_blank" rel="external">http://www.jcodecraeer.com/a/anzhuokaifa/developer/2015/0531/2958.html</a></li>
+<li>Android兼容包详解：<a href="http://stormzhang.com/android/2015/03/29/android-support-library/" target="_blank" rel="external">http://stormzhang.com/android/2015/03/29/android-support-library/</a></li>
+</ol>
+<hr>
+<p><strong>By tjt</strong></p>
+<p><strong>2016.04.13</strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/14/Android5_RecyclerView/" rel="next" title="Android4_RecyclerView">
+                <i class="fa fa-chevron-left"></i> Android4_RecyclerView
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/14/Android4_TabLayout/"
+           data-title="Android4_使用TabLayout和ViewPager实现顶部标签页" data-url="http://onlytjt.github.io/2016/04/14/Android4_TabLayout/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/misaki.jpg"
+               alt="Tian Jiatian" />
+          <p class="site-author-name" itemprop="name">Tian Jiatian</p>
+          <p class="site-description motion-element" itemprop="description">宅宅的，但是很暖</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/onlytjt" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2415797647" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 微博
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/jacob-tian-44" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 知乎
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/onlytjt/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 博客园
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://space.bilibili.com/499295/#!/index" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Bilibili
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建布局文件"><span class="nav-number">1.</span> <span class="nav-text">创建布局文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建ViewPager适配器"><span class="nav-number">2.</span> <span class="nav-text">创建ViewPager适配器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置TabLayout"><span class="nav-number">3.</span> <span class="nav-text">设置TabLayout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用和连接"><span class="nav-number">4.</span> <span class="nav-text">引用和连接</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tian Jiatian</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"onlytjt"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>
