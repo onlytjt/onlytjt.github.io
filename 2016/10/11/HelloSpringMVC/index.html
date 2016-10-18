@@ -57,16 +57,25 @@
 
 
 
-<meta name="description" content="0. 前言在Java对象的创建时，单例模式使用尤其多，同时也是个面试必问的基础题。很多时候面试官想问的无非是懒汉式的双重检验锁。但是其实还有两种更加直观高效的写法，也是《Effective Java》中所推荐的写法。">
+<meta name="description" content="本文将演示一下如何在IntelliJ IDEA中建立一个gradle管理的Spring MVC工程，主要针对刚入门的同学，快速构建一个web应用程序并开启学习之路。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 单例模式的两种高效写法">
-<meta property="og:url" content="http://onlytjt.github.io/2016/09/30/Singleton/index.html">
+<meta property="og:title" content="Spring MVC 1：IDEA中新建工程">
+<meta property="og:url" content="http://onlytjt.github.io/2016/10/11/HelloSpringMVC/index.html">
 <meta property="og:site_name" content="懒角落">
-<meta property="og:description" content="0. 前言在Java对象的创建时，单例模式使用尤其多，同时也是个面试必问的基础题。很多时候面试官想问的无非是懒汉式的双重检验锁。但是其实还有两种更加直观高效的写法，也是《Effective Java》中所推荐的写法。">
-<meta property="og:updated_time" content="2016-09-30T10:44:55.000Z">
+<meta property="og:description" content="本文将演示一下如何在IntelliJ IDEA中建立一个gradle管理的Spring MVC工程，主要针对刚入门的同学，快速构建一个web应用程序并开启学习之路。">
+<meta property="og:image" content="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/1.png?raw=true">
+<meta property="og:image" content="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/2.png?raw=true">
+<meta property="og:image" content="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/3.png?raw=true">
+<meta property="og:image" content="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/4.png?raw=true">
+<meta property="og:image" content="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/5.png?raw=true">
+<meta property="og:image" content="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/6.png?raw=true">
+<meta property="og:image" content="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/7.png?raw=true">
+<meta property="og:image" content="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/8.png?raw=true">
+<meta property="og:updated_time" content="2016-10-18T06:19:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java 单例模式的两种高效写法">
-<meta name="twitter:description" content="0. 前言在Java对象的创建时，单例模式使用尤其多，同时也是个面试必问的基础题。很多时候面试官想问的无非是懒汉式的双重检验锁。但是其实还有两种更加直观高效的写法，也是《Effective Java》中所推荐的写法。">
+<meta name="twitter:title" content="Spring MVC 1：IDEA中新建工程">
+<meta name="twitter:description" content="本文将演示一下如何在IntelliJ IDEA中建立一个gradle管理的Spring MVC工程，主要针对刚入门的同学，快速构建一个web应用程序并开启学习之路。">
+<meta name="twitter:image" content="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/1.png?raw=true">
 
 
 
@@ -84,7 +93,7 @@
   };
 </script>
 
-  <title> Java 单例模式的两种高效写法 | 懒角落 </title>
+  <title> Spring MVC 1：IDEA中新建工程 | 懒角落 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -222,7 +231,7 @@
             
             
               
-                Java 单例模式的两种高效写法
+                Spring MVC 1：IDEA中新建工程
               
             
           </h1>
@@ -234,8 +243,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-30T13:37:42+08:00" content="2016-09-30">
-              2016-09-30
+            <time itemprop="dateCreated" datetime="2016-10-11T16:56:58+08:00" content="2016-10-11">
+              2016-10-11
             </time>
           </span>
 
@@ -245,8 +254,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/30/Singleton/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/30/Singleton/" itemprop="commentsCount"></span>
+                <a href="/2016/10/11/HelloSpringMVC/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/11/HelloSpringMVC/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -268,26 +277,65 @@
       
 
       
-        <h5 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h5><p>在Java对象的创建时，单例模式使用尤其多，同时也是个面试必问的基础题。很多时候面试官想问的无非是懒汉式的双重检验锁。但是其实还有两种更加直观高效的写法，也是《Effective Java》中所推荐的写法。<br><a id="more"></a></p>
-<h5 id="1-静态内部类-static-nested-class"><a href="#1-静态内部类-static-nested-class" class="headerlink" title="1. 静态内部类(static nested class)"></a>1. 静态内部类(static nested class)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> SingletonHolder.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由于静态内部类<code>SingletonHolder</code>只有在<code>getInstance()</code>方法第一次被调用时，才会被加载，而且构造函数为private，因此该种方式实现了懒汉式的单例模式。不仅如此，根据JVM本身机制，静态内部类的加载已经实现了线程安全。所以给大家推荐这种写法。</p>
-<h5 id="2-枚举法-Enum"><a href="#2-枚举法-Enum" class="headerlink" title="2. 枚举法(Enum)"></a>2. 枚举法(Enum)</h5><p>在《Effective Java》最后推荐了这样一个写法，简直有点颠覆，不仅超级简单，而且保证了现场安全。这里引用一下，此方法无偿提供了序列化机制，绝对防止多次实例化，及时面对复杂的序列化或者反射攻击。单元素枚举类型已经成为实现Singleton的最佳方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton &#123;</span><br><span class="line">	INSTANCE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="3-枚举法探究"><a href="#3-枚举法探究" class="headerlink" title="3. 枚举法探究"></a>3. 枚举法探究</h5><p>很多人会对枚举法实现的单例模式很不理解。这里需要深入理解的是两个点：</p>
+        <p>本文将演示一下如何在IntelliJ IDEA中建立一个gradle管理的Spring MVC工程，主要针对刚入门的同学，快速构建一个web应用程序并开启学习之路。</p>
+<a id="more"></a>
+<p>建立一个Spring MVC工程主要就是两个步骤：</p>
 <ul>
-<li>枚举类实现其实省略了<code>private</code>类型的构造函数</li>
-<li>枚举类的域(field)其实是相应的enum类型的一个实例对象</li>
+<li>新建一个gradle工程</li>
+<li>在gradle工程中新建一个Spring MVC module</li>
 </ul>
-<p>对于第一点实际上enum内部是如下代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton &#123;</span><br><span class="line">	INSTANCE;</span><br><span class="line">	<span class="comment">// 这里隐藏了一个空的私有构造方法</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>对于一个标准的enum单例模式，最优秀的写法还是实现接口的形式:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义单例模式中需要完成的代码逻辑</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MySingleton</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton implements MySingleton &#123;</span><br><span class="line">    INSTANCE &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"complete singleton"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MySingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Singleton.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>到这里，相信各位同学一定非常明白了。以后写让人眼前一亮的effective code吧~</p>
-<h5 id="4-一些资料"><a href="#4-一些资料" class="headerlink" title="4. 一些资料"></a>4. 一些资料</h5><p>以下列举了枚举法探究的一些很好的链接，强烈建议读者点进去用心体会一下。</p>
-<ul>
-<li><a href="http://stackoverflow.com/questions/26285520/implementing-singleton-with-an-enum-in-java" target="_blank" rel="external">http://stackoverflow.com/questions/26285520/implementing-singleton-with-an-enum-in-java</a></li>
-<li><a href="http://stackoverflow.com/questions/23721115/singleton-pattern-using-enum-version" target="_blank" rel="external">http://stackoverflow.com/questions/23721115/singleton-pattern-using-enum-version</a></li>
-</ul>
+<h4 id="1-新建gradle工程"><a href="#1-新建gradle工程" class="headerlink" title="1. 新建gradle工程"></a>1. 新建gradle工程</h4><p><img src="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/1.png?raw=true" alt="新建工程"></p>
+<p><img src="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/2.png?raw=true" alt="指定GroupId和ArtifactId"></p>
+<p><img src="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/3.png?raw=true" alt="指定gradle和JDK"></p>
+<h4 id="2-在gradle工程中新建Spring-MVC-module"><a href="#2-在gradle工程中新建Spring-MVC-module" class="headerlink" title="2. 在gradle工程中新建Spring MVC module"></a>2. 在gradle工程中新建Spring MVC module</h4><p><img src="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/4.png?raw=true" alt="指定gradle和JDK"></p>
+<p><img src="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/5.png?raw=true" alt="Spring MVC Module"></p>
+<p>上图要注意的点是，注意勾选<code>Web Application</code>选项，并在<code>Application Server</code>中配置<code>Tomcat</code></p>
+<p><img src="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/6.png?raw=true" alt="设置module name"></p>
+<p><img src="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/7.png?raw=true" alt="Hello World"><br>我们更改<code>index.jsp</code>中的body部分，然后点击idea的运行button，就可以启动系统默认浏览器，并打开配置的相应的Tomcat端口号。并在页面显示<code>Hello World</code></p>
+<h4 id="3-可能出现的小bug与Tips"><a href="#3-可能出现的小bug与Tips" class="headerlink" title="3. 可能出现的小bug与Tips"></a>3. 可能出现的小bug与Tips</h4><p>在deploy应用的时候，可能会由于缺少lib和jar挂掉。典型的错误log如下图：</p>
+<p><img src="https://github.com/onlytjt/MarkdownSource/blob/master/pic/HelloSpringMVC/8.png?raw=true" alt="deploy bug"></p>
+<p>由于我们新建Spring MVC modlue的时候，框架已经把需要的相关依赖下载好了，只是没有配置到正确位置，在idea中可以很简单的fix掉。<code>File-&gt;Project Structure</code>点选左侧的<code>Problem</code>，并将所有的问题fix掉就可以了。</p>
+<p>另外idea会自动启动Tomcat，因此要确保Tomcat处于shutdown状态并且端口没有被占用。查看Tomcat状态的命令为：<code>ps -ef | grep tomcat</code></p>
+<h4 id="4-Eclipse和IDEA中项目结构对比"><a href="#4-Eclipse和IDEA中项目结构对比" class="headerlink" title="4. Eclipse和IDEA中项目结构对比"></a>4. Eclipse和IDEA中项目结构对比</h4><p>有很多同学很困扰IDEA中的Project，Module都是什么概念，下表列出了相关的对比，便于使用Eclipse的同学理解。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Eclipse</th>
+<th style="text-align:left">IDEA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Workspace</td>
+<td style="text-align:left">Project</td>
+</tr>
+<tr>
+<td style="text-align:left">Project</td>
+<td style="text-align:left">Module</td>
+</tr>
+<tr>
+<td style="text-align:left">Project-specific JRE</td>
+<td style="text-align:left">Module JDK</td>
+</tr>
+<tr>
+<td style="text-align:left">User library</td>
+<td style="text-align:left">Global library</td>
+</tr>
+<tr>
+<td style="text-align:left">Classpath variable</td>
+<td style="text-align:left">Path variable</td>
+</tr>
+<tr>
+<td style="text-align:left">Project dependency</td>
+<td style="text-align:left">Module dependency</td>
+</tr>
+<tr>
+<td style="text-align:left">Library</td>
+<td style="text-align:left">Module library</td>
+</tr>
+</tbody>
+</table>
+<p>经过以上，就可以完成新建一个Spring MVC的工作。下一篇文章，我准备详细介绍一下Spring MVC工程结构，与MVC框架相关知识，并建立controller完成简单的事件处理。</p>
 
       
     </div>
@@ -311,17 +359,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/15/Android5_RecyclerView/" rel="next" title="Android5：RecyclerView使用简介">
-                <i class="fa fa-chevron-left"></i> Android5：RecyclerView使用简介
+              <a href="/2016/09/30/Singleton/" rel="next" title="Java 单例模式的两种高效写法">
+                <i class="fa fa-chevron-left"></i> Java 单例模式的两种高效写法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/11/HelloSpringMVC/" rel="prev" title="Spring MVC 1：IDEA中新建工程">
-                Spring MVC 1：IDEA中新建工程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -347,8 +391,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/09/30/Singleton/"
-           data-title="Java 单例模式的两种高效写法" data-url="http://onlytjt.github.io/2016/09/30/Singleton/">
+      <div class="ds-thread" data-thread-key="2016/10/11/HelloSpringMVC/"
+           data-title="Spring MVC 1：IDEA中新建工程" data-url="http://onlytjt.github.io/2016/10/11/HelloSpringMVC/">
       </div>
     
   </div>
@@ -487,7 +531,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#0-前言"><span class="nav-number">1.</span> <span class="nav-text">0. 前言</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-静态内部类-static-nested-class"><span class="nav-number">2.</span> <span class="nav-text">1. 静态内部类(static nested class)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-枚举法-Enum"><span class="nav-number">3.</span> <span class="nav-text">2. 枚举法(Enum)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-枚举法探究"><span class="nav-number">4.</span> <span class="nav-text">3. 枚举法探究</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-一些资料"><span class="nav-number">5.</span> <span class="nav-text">4. 一些资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-新建gradle工程"><span class="nav-number">1.</span> <span class="nav-text">1. 新建gradle工程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-在gradle工程中新建Spring-MVC-module"><span class="nav-number">2.</span> <span class="nav-text">2. 在gradle工程中新建Spring MVC module</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-可能出现的小bug与Tips"><span class="nav-number">3.</span> <span class="nav-text">3. 可能出现的小bug与Tips</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Eclipse和IDEA中项目结构对比"><span class="nav-number">4.</span> <span class="nav-text">4. Eclipse和IDEA中项目结构对比</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
