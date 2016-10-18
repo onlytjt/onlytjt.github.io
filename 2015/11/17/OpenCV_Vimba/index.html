@@ -65,7 +65,7 @@
 <meta property="og:description" content="近来，由于项目需求，需要使用AVT的一款相机采集图像并进行相应的算法处理。环境的配置过程较为复杂，特此记录，以做备忘。也给有需要的小伙伴们一些key point的分享。搭建环境：Windows7 + Python2.7 + OpenCV3.0">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Vimba_1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Vimba_2.png">
-<meta property="og:updated_time" content="2016-03-18T06:22:29.000Z">
+<meta property="og:updated_time" content="2016-10-18T11:01:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AVT Vimba与OpenCV环境配置">
 <meta name="twitter:description" content="近来，由于项目需求，需要使用AVT的一款相机采集图像并进行相应的算法处理。环境的配置过程较为复杂，特此记录，以做备忘。也给有需要的小伙伴们一些key point的分享。搭建环境：Windows7 + Python2.7 + OpenCV3.0">
@@ -282,7 +282,7 @@
 <p>(2) 由于使用Python API，进入OpenCV安装目录下<code>/build/python/2.7/cv2.pyd</code>。将cv2.pyd复制到Python安装目录下的<code>/Lib/site-packages/</code>。</p>
 <p>至此就可以使用Python进行OpenCV的相关操作了。</p>
 <h4 id="3-AVT-Vimba"><a href="#3-AVT-Vimba" class="headerlink" title="3. AVT Vimba"></a>3. AVT Vimba</h4><p>(1) <a href="https://www.alliedvision.com/en/products/software.html" target="_blank" rel="external">AVT官网</a>下载并安装。由于官方仅提供了C/C++的API，因此想使用Python的同学有几个选择：使用ctypes，或者使用pymba。</p>
-<p>(2) 这里要感谢伟大的Github，给我们节约了无数的时间，也让我们能够学习到最先进的代码。pymba的Github地址，<a href="">https://github.com/morefigs/pymba</a>。这里安装过程同pip，下载解压到某个文件夹后，使用cmd shell，cd到相应目录，输入<code>python setup.py install</code>。</p>
+<p>(2) 这里要感谢伟大的Github，给我们节约了无数的时间，也让我们能够学习到最先进的代码。pymba的Github地址，<a href="https://github.com/morefigs/pymba" target="_blank" rel="external">https://github.com/morefigs/pymba</a>。这里安装过程同pip，下载解压到某个文件夹后，使用cmd shell，cd到相应目录，输入<code>python setup.py install</code>。</p>
 <p><img src="https://raw.githubusercontent.com/onlytjt/MarkdownSource/master/pic/Vimba_2.png" alt="安装pymba"></p>
 <p>(3) 这里要注意两点。一、pymba目前仅支持Vimba1.3的版本，因此下载更高版本的同学在后续使用过程中，可能会遇到各种Bug。二、在安装pymba之后，需要更改pymba默认索引的VimbaC.dll的路径。具体更改方法为找到<code>/pymba/vimbadll.py</code>将其中的Line13和Line16更改为自己VimbaC.dll的路径。我的如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vimbaC_path = r&apos;D:\Program Files\Allied Vision\Vimba_1.4\VimbaC\Bin\VimbaC.dll&apos;</span><br></pre></td></tr></table></figure></p>
 <p>重新编译后，就可以尽情地在python中import了！哎~人生苦短，我用Python啊！</p>
